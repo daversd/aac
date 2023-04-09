@@ -2,20 +2,22 @@ import { FC, useEffect, useState } from "react";
 import { EntryFC } from "../components/entry-fc";
 import { Entry } from "../core/entry";
 import { acervo } from "../data/acervo";
-import { FilterEntriesByData } from "../utils/filter-entries";
+import { FilterEntriesByData, FilterEntriesGeneric } from "../utils/filter-entries";
 
 export const App: FC = () => {
   const [allData] = useState<Entry[]>(acervo);
   const [filteredData, setFilteredData] = useState<Entry[]>(allData);
+  const [nameFilter, setNameFilter] = useState<string>('');
   const [keywordFilter, setKeywordFilter] = useState<string>('');
   const [authorFilter, setAuthorFilter] = useState<string>('');
   const [typeFilter, setTypeFilter] = useState<string>('');
   const [yearFilter, setYearFilter] = useState<string>('');
   const [abstractFilter, setAbstractFilter] = useState<string>('');
+  const [genericFilter, setGenericFilter] = useState<string>('');
 
-  // filtra os elementos quando os campos são atualizados
+  // filtra os elementos quando os campos individuais são atualizados
   useEffect(() => {
-    const allPatterns = ''.concat(keywordFilter, authorFilter, typeFilter, yearFilter, abstractFilter);
+    const allPatterns = ''.concat(keywordFilter, authorFilter, typeFilter, yearFilter, abstractFilter, nameFilter);
     if (allPatterns === '') {
       setFilteredData(allData)
       return;
@@ -23,15 +25,30 @@ export const App: FC = () => {
 
     setFilteredData(FilterEntriesByData({ 
       entries: allData, 
+      nameFilter: stringToPatterns(nameFilter),
       keywordsFilter: stringToPatterns(keywordFilter),
       authorFilter: stringToPatterns(authorFilter),
       typeFilter: stringToPatterns(typeFilter),
       yearFilter: stringToPatterns(yearFilter),
       abstractFilter: stringToPatterns(abstractFilter)
     }));
-  }, [keywordFilter, authorFilter, typeFilter, yearFilter, abstractFilter]);
+  }, [keywordFilter, authorFilter, typeFilter, yearFilter, abstractFilter, nameFilter]);
+
+  useEffect(() => {
+    const pattern = stringToPatterns(genericFilter);
+    if (!pattern) {
+      setFilteredData(allData)
+      return;
+    }
+
+    setFilteredData(FilterEntriesGeneric(allData, pattern))
+  }, [genericFilter]);
 
   return <>
+    <div>
+      <label >filtro por nome</label> <br />
+      <input onChange={e => setNameFilter(e.target.value)}></input>
+    </div>
     <div>
       <label >filtro por keywords</label> <br />
       <input onChange={e => setKeywordFilter(e.target.value)}></input>
@@ -53,6 +70,10 @@ export const App: FC = () => {
       <input onChange={e => setTypeFilter(e.target.value)}></input>
     </div>
     <br />
+    <div>
+      <label >filtro genérico</label> <br />
+      <input onChange={e => setGenericFilter(e.target.value)}></input>
+    </div>
     <br />
     <br />
     {filteredData.map((e, i) =>
