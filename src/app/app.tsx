@@ -1,8 +1,10 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { EntryFC } from "../components/entry-fc";
-import { Entry } from "../core/entry";
+import { Entry, EntryType } from "../core/entry";
 import { acervo } from "../data/acervo";
 import { FilterEntriesByData, FilterEntriesGeneric } from "../utils/filter-entries";
+import { TypeFilterFC } from "../components/type-filter-fc";
+
 
 export const App: FC = () => {
   const [allData] = useState<Entry[]>(acervo);
@@ -14,6 +16,11 @@ export const App: FC = () => {
   const [yearFilter, setYearFilter] = useState<string>('');
   const [abstractFilter, setAbstractFilter] = useState<string>('');
   const [genericFilter, setGenericFilter] = useState<string>('');
+
+  const updateTypeFilter = useCallback((value: EntryType[]) => {
+    const string = value.join(' ');
+    setTypeFilter(string);
+  }, [typeFilter]);
 
   // filtra os elementos quando os campos individuais são atualizados
   useEffect(() => {
@@ -67,7 +74,7 @@ export const App: FC = () => {
     </div>
     <div>
       <label >filtro por tipo</label> <br />
-      <input onChange={e => setTypeFilter(e.target.value)}></input>
+      <TypeFilterFC updateFilter={updateTypeFilter} />
     </div>
     <br />
     <div>

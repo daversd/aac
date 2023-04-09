@@ -11,6 +11,7 @@ export const EntryFC: FC<EntryFCProps> = ({ entry }) => {
     <div>{entry.year}</div>
     <div>{entry.authors.join('|')}</div>
     <div>{entry.keywords.join('|')}</div>
+    <div>{entry.types.join('|')}</div>
     {entry.links.map((l,i) => 
     <a key={i} href={l}> {l} </a>
     )}

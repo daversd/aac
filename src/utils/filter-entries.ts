@@ -9,7 +9,7 @@ export interface FilterEntryProps {
   typeFilter?: string[],
   abstractFilter?: string[],
 }
-export function FilterEntriesByData({entries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter}: FilterEntryProps): Entry[] {
+export function FilterEntriesByData({ entries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterEntryProps): Entry[] {
   const filtered: Entry[] = [];
   for (const entry of entries) {
     if (nameFilter && !matchPattern(entry.name, nameFilter)) continue;
@@ -24,7 +24,7 @@ export function FilterEntriesByData({entries, nameFilter, keywordsFilter, author
   return filtered;
 }
 
-export function FilterEntriesGeneric(entries: Entry[], pattern: string []): Entry[] {
+export function FilterEntriesGeneric(entries: Entry[], pattern: string[]): Entry[] {
   const filtered: Entry[] = [];
   for (const entry of entries) {
     if (entry.keywords.some(e => matchPattern((e), pattern))) {
@@ -57,7 +57,17 @@ export function FilterEntriesGeneric(entries: Entry[], pattern: string []): Entr
 }
 
 function cleanString(str: string): string {
-  return str.toLowerCase();
+  let cleaned = str.toLowerCase();
+  cleaned = cleaned.replace(new RegExp("[àáâãäå]", 'g'), "a");
+  cleaned = cleaned.replace(new RegExp("ç", 'g'), "c");
+  cleaned = cleaned.replace(new RegExp("[èéêë]", 'g'), "e");
+  cleaned = cleaned.replace(new RegExp("[ìíîï]", 'g'), "i");
+  cleaned = cleaned.replace(new RegExp("ñ", 'g'), "n");
+  cleaned = cleaned.replace(new RegExp("[òóôõö]", 'g'), "o");
+  cleaned = cleaned.replace(new RegExp("œ", 'g'), "oe");
+  cleaned = cleaned.replace(new RegExp("[ùúûü]", 'g'), "u");
+
+  return cleaned;
 }
 
 function matchPattern(str: string, patterns: string[]): boolean {
