@@ -1,6 +1,7 @@
 import { Entry, EntryType } from "../core/entry";
+import { getLinkAddress } from "../utils/get-link-address";
 
-export const acervo: Entry[] = [
+const _acervo: Entry[] = [
   {
     name: 'Habitat [and] intelligence',
     year: 2020,
@@ -78,3 +79,8 @@ export const acervo: Entry[] = [
     ]
   }
 ];
+
+// adiciona os links calculados automaticamente ao acervo
+_acervo.forEach(e => {e.address = getLinkAddress(e)});
+
+export const acervo = _acervo;

@@ -6,7 +6,8 @@ export interface Entry {
   types: EntryType[],
   keywords: string[],
   links: string[],
-  imageLink?: string
+  imageLink?: string,
+  address?: string,
 }
 
 export enum EntryType {
