@@ -1,5 +1,5 @@
-import { Entry, EntryType } from "../core/entry";
-import { getLinkAddress } from "../utils/get-link-address";
+import { Entry, EntryType } from '../core/entry';
+import { getLinkAddress } from '../utils/get-link-address';
 
 const _acervo: Entry[] = [
   {
@@ -81,6 +81,6 @@ const _acervo: Entry[] = [
 ];
 
 // adiciona os links calculados automaticamente ao acervo
-_acervo.forEach(e => {e.address = getLinkAddress(e)});
+_acervo.forEach(e => { e.address = getLinkAddress(e); });
 
 export const acervo = _acervo;

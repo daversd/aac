@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Entry } from "../core/entry"
+import { FC } from 'react';
+import { Entry } from '../core/entry';
 
 export interface EntryFCProps {
   entry: Entry;
@@ -13,8 +13,8 @@ export const EntryFC: FC<EntryFCProps> = ({ entry }) => {
     <div>{entry.keywords.join('|')}</div>
     <div>{entry.types.join('|')}</div>
     <div>{entry.address}</div>
-    {entry.links.map((l,i) => 
-    <a key={i} href={l}> {l} </a>
+    {entry.links.map((l, i) =>
+      <a key={i} href={l}> {l} </a>
     )}
-  </div>
-}
+  </div>;
+};

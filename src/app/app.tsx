@@ -1,10 +1,9 @@
-import { FC, useCallback, useEffect, useState } from "react";
-import { EntryFC } from "../components/entry-fc";
-import { Entry, EntryType } from "../core/entry";
-import { acervo } from "../data/acervo";
-import { FilterEntriesByData, FilterEntriesGeneric } from "../utils/filter-entries";
-import { TypeFilterFC } from "../components/type-filter-fc";
-
+import { FC, useCallback, useEffect, useState } from 'react';
+import { EntryFC } from '../components/entry-fc';
+import { Entry, EntryType } from '../core/entry';
+import { acervo } from '../data/acervo';
+import { FilterEntriesByData, FilterEntriesGeneric } from '../utils/filter-entries';
+import { TypeFilterFC } from '../components/type-filter-fc';
 
 export const App: FC = () => {
   const [allData] = useState<Entry[]>(acervo);
@@ -26,12 +25,12 @@ export const App: FC = () => {
   useEffect(() => {
     const allPatterns = ''.concat(keywordFilter, authorFilter, typeFilter, yearFilter, abstractFilter, nameFilter);
     if (allPatterns === '') {
-      setFilteredData(allData)
+      setFilteredData(allData);
       return;
     }
 
-    setFilteredData(FilterEntriesByData({ 
-      entries: allData, 
+    setFilteredData(FilterEntriesByData({
+      entries: allData,
       nameFilter: stringToPatterns(nameFilter),
       keywordsFilter: stringToPatterns(keywordFilter),
       authorFilter: stringToPatterns(authorFilter),
@@ -44,11 +43,11 @@ export const App: FC = () => {
   useEffect(() => {
     const pattern = stringToPatterns(genericFilter);
     if (!pattern) {
-      setFilteredData(allData)
+      setFilteredData(allData);
       return;
     }
 
-    setFilteredData(FilterEntriesGeneric(allData, pattern))
+    setFilteredData(FilterEntriesGeneric(allData, pattern));
   }, [genericFilter]);
 
   return <>
@@ -89,10 +88,10 @@ export const App: FC = () => {
         <br />
       </div>
     )}
-  </>
-}
+  </>;
+};
 
-function stringToPatterns(str: string): string[] | undefined {
+function stringToPatterns (str: string): string[] | undefined {
   str.replace(',', '');
   const pattern = str.split(' ').filter(p => p !== '');
   return pattern.length === 0 ? undefined : pattern;

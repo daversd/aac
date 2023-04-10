@@ -1,5 +1,5 @@
-import { FC, useCallback, useState } from "react";
-import { EntryType } from "../core/entry";
+import { FC, useCallback, useState } from 'react';
+import { EntryType } from '../core/entry';
 
 export interface TypeFilterFCProps {
   updateFilter: (value: EntryType[]) => void;
@@ -14,15 +14,14 @@ export const TypeFilterFC: FC<TypeFilterFCProps> = ({ updateFilter }) => {
     copy[index] = value;
     setSelectedTypes(copy);
     updateFilter(allTypes.filter((_, i) => copy[i]));
-  }, [selectedTypes])
+  }, [selectedTypes]);
 
-  
   return <div>
-    {allTypes.map((_, i) => 
-    <div key={i}>
-      <label>{Object.values(EntryType)[i]}</label>
-      <input type={'checkbox'} checked={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} />
-    </div>
+    {allTypes.map((_, i) =>
+      <div key={i}>
+        <label>{Object.values(EntryType)[i]}</label>
+        <input type={'checkbox'} checked={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} />
+      </div>
     )}
-  </div>
-}
+  </div>;
+};

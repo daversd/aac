@@ -1,5 +1,5 @@
-import { Entry } from "../core/entry";
-import { cleanString } from "./clean-string";
+import { Entry } from '../core/entry';
+import { cleanString } from './clean-string';
 
 export interface FilterEntryProps {
   entries: Entry[],
@@ -10,7 +10,7 @@ export interface FilterEntryProps {
   typeFilter?: string[],
   abstractFilter?: string[],
 }
-export function FilterEntriesByData({ entries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterEntryProps): Entry[] {
+export function FilterEntriesByData ({ entries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterEntryProps): Entry[] {
   const filtered: Entry[] = [];
   for (const entry of entries) {
     if (nameFilter && !matchPattern(entry.name, nameFilter)) continue;
@@ -25,7 +25,7 @@ export function FilterEntriesByData({ entries, nameFilter, keywordsFilter, autho
   return filtered;
 }
 
-export function FilterEntriesGeneric(entries: Entry[], pattern: string[]): Entry[] {
+export function FilterEntriesGeneric (entries: Entry[], pattern: string[]): Entry[] {
   const filtered: Entry[] = [];
   for (const entry of entries) {
     if (entry.keywords.some(e => matchPattern((e), pattern))) {
@@ -57,8 +57,6 @@ export function FilterEntriesGeneric(entries: Entry[], pattern: string[]): Entry
   return filtered;
 }
 
-
-
-function matchPattern(str: string, patterns: string[]): boolean {
+function matchPattern (str: string, patterns: string[]): boolean {
   return patterns.some(pattern => cleanString(str).includes(cleanString(pattern)));
 }
