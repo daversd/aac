@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Entry } from '../core/entry';
+import { Entry } from '../../core/entry';
 
 export interface EntryFCProps {
   entry: Entry;

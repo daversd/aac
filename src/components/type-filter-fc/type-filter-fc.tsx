@@ -1,5 +1,5 @@
 import { FC, useCallback, useState } from 'react';
-import { EntryType } from '../core/entry';
+import { EntryType } from '../../core/entry';
 
 export interface TypeFilterFCProps {
   updateFilter: (value: EntryType[]) => void;
