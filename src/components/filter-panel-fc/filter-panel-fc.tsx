@@ -1,8 +1,10 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import { TypeFilterFC } from "../type-filter-fc/type-filter-fc";
 import { Entry, EntryType } from "../../core/entry";
 import { acervo } from "../../data/acervo";
 import { FilterEntriesByData, FilterEntriesGeneric } from "../../utils/filter-entries";
+import { TypeFilterFC } from "../type-filter-fc/type-filter-fc";
+import filterPanelStyle from './filter-panel-fc.module.scss';
+import mainStyle from '../../style-sheets/main-style.module.scss';
 
 export interface FilterPanelProps {
   updateFilteredData: (filteredData: Entry[]) => void;
@@ -10,7 +12,6 @@ export interface FilterPanelProps {
 
 export const FilterPanelFC: FC<FilterPanelProps> = ({ updateFilteredData }) => {
   const [allData] = useState<Entry[]>(acervo);
-  // const [_, setFilteredData] = useState<Entry[]>(allData);
   const [nameFilter, setNameFilter] = useState<string>('');
   const [keywordFilter, setKeywordFilter] = useState<string>('');
   const [authorFilter, setAuthorFilter] = useState<string>('');
@@ -53,37 +54,38 @@ export const FilterPanelFC: FC<FilterPanelProps> = ({ updateFilteredData }) => {
     updateFilteredData(FilterEntriesGeneric(allData, pattern));
   }, [genericFilter]);
 
-  return <>
-    <div>
-      <label >filtro por nome</label> <br />
-      <input onChange={e => setNameFilter(e.target.value)}></input>
-    </div>
-    <div>
-      <label >filtro por keywords</label> <br />
-      <input onChange={e => setKeywordFilter(e.target.value)}></input>
-    </div>
-    <div>
-      <label >filtro por autorxs</label> <br />
-      <input onChange={e => setAuthorFilter(e.target.value)}></input>
-    </div>
-    <div>
-      <label >filtro por ano</label> <br />
-      <input onChange={e => setYearFilter(e.target.value)}></input>
-    </div>
-    <div>
-      <label >filtro por resumo</label> <br />
-      <input onChange={e => setAbstractFilter(e.target.value)}></input>
-    </div>
-    <div>
-      <label >filtro por tipo</label> <br />
-      <TypeFilterFC updateFilter={updateTypeFilter} />
+  return <div className={filterPanelStyle.container}>
+    <div className={mainStyle.title}>Filtros</div>
+    <div className={mainStyle.filterContainer}>
+      <label className={mainStyle.label}>filtro genérico</label> <br />
+      <input className={mainStyle.filterInput} onChange={e => setGenericFilter(e.target.value)}></input>
     </div>
     <br />
-    <div>
-      <label >filtro genérico</label> <br />
-      <input onChange={e => setGenericFilter(e.target.value)}></input>
+    <div className={mainStyle.filterContainer}>
+      <label className={mainStyle.label}>filtro por nome</label> <br />
+      <input className={mainStyle.filterInput} onChange={e => setNameFilter(e.target.value)}></input>
     </div>
-  </>;
+    <div className={mainStyle.filterContainer}>
+      <label className={mainStyle.label}>filtro por keywords</label> <br />
+      <input className={mainStyle.filterInput} onChange={e => setKeywordFilter(e.target.value)}></input>
+    </div>
+    <div className={mainStyle.filterContainer}>
+      <label className={mainStyle.label}>filtro por autorxs</label> <br />
+      <input className={mainStyle.filterInput} onChange={e => setAuthorFilter(e.target.value)}></input>
+    </div>
+    <div className={mainStyle.filterContainer}>
+      <label className={mainStyle.label}>filtro por ano</label> <br />
+      <input className={mainStyle.filterInput} onChange={e => setYearFilter(e.target.value)}></input>
+    </div>
+    <div className={mainStyle.filterContainer}>
+      <label className={mainStyle.label}>filtro por resumo</label> <br />
+      <input className={mainStyle.filterInput} onChange={e => setAbstractFilter(e.target.value)}></input>
+    </div>
+    <div className={mainStyle.filterContainer}>
+      <label className={mainStyle.label}>filtro por tipo</label> <br />
+      <TypeFilterFC updateFilter={updateTypeFilter} />
+    </div>
+  </div>;
 };
 
 function stringToPatterns (str: string): string[] | undefined {

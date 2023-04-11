@@ -1,5 +1,6 @@
 import { FC, useCallback, useState } from 'react';
 import { EntryType } from '../../core/entry';
+import mainStyle from '../../style-sheets/main-style.module.scss';
 
 export interface TypeFilterFCProps {
   updateFilter: (value: EntryType[]) => void;
@@ -19,8 +20,8 @@ export const TypeFilterFC: FC<TypeFilterFCProps> = ({ updateFilter }) => {
   return <div>
     {allTypes.map((_, i) =>
       <div key={i}>
-        <label>{Object.values(EntryType)[i]}</label>
         <input type={'checkbox'} checked={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} />
+        <label className={mainStyle.regular}>{Object.values(EntryType)[i]}</label>
       </div>
     )}
   </div>;

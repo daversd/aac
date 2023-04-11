@@ -1,0 +1,65 @@
+.title {
+    font-size: 22pt;
+    font-weight: bold;
+    font-family: 'Anonymous Pro', monospace;
+    color: black;
+    text-decoration: none;
+    padding-bottom: 25px;
+}
+
+.regular {
+    font-size: 12pt;
+    font-family: 'Anonymous Pro', monospace;
+    color: black;
+    text-decoration: none;
+}
+
+.p {
+    @extend .regular;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.regularLink {
+    font-size: 12pt;
+    font-family: 'Anonymous Pro', monospace;
+    color: rgb(55, 96, 185);
+    text-decoration: underline;
+}
+
+.regularLink:hover {
+    font-weight: bold;
+}
+
+.label {
+    @extend .regular;
+    font-weight: bold;
+}
+
+.entryTitle {
+    font-size: 16pt;
+    font-weight: bold;
+    font-family: 'Anonymous Pro', monospace;
+    color: black;
+    text-decoration: none;
+}
+
+.regularContainer {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.filterContainer {
+    padding-top: 10px;
+}
+
+.filterInput {
+    font-size: 12pt;
+    font-family: 'Anonymous Pro', monospace;
+    background: none;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    display: -webkit-flex;
+    -webkit-box-flex: 1;
+}
