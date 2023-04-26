@@ -20,5 +20,6 @@ export enum EntryType {
   Website = 'Website',
   Artigo = 'Artigo',
   Evento = 'Evento',
-  TCC = 'TCC'
+  TCC = 'TCC',
+  Livro = 'Livro'
 }
