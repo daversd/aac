@@ -1,16 +1,202 @@
-.title {
-    font-size: 22pt;
+@import './mixins.module.scss';
+
+// define as cores do tema
+$clr-background: white;
+$clr-text-primary: black;
+$clr-text-secondary: #A5A5A5;
+$clr-bkg-light: #F1F1F1;
+$clr-bkg-medium: #C4C4C4;
+$clr-accent-primary: #88D500;
+$clr-accent-secondary: #DEF0BE;
+
+// define os paddings do tema
+$pad-large: 60px;
+$pad-default: 30px;
+$pad-small: 10px;
+
+// define as margens do tema
+$mar-large: 60px;
+$mar-default: 30px;
+$mar-small: 10px;
+
+$font-default: 'Anonymous Pro', monospace;
+
+.mainContent {
+    background-color: $clr-background;
+    min-height: 100vh;
+}
+
+.nestedContent {
+    padding-top: 20px;
+}
+
+// nav bar
+$nav-height-regular: 80px;
+$nav-height-small: 60px;
+$nav-title-width-regular: 160px;
+$nav-title-width-small: 80px;
+$nav-links-width-regular: 400px;
+$nav-links-button-width: 60px;
+$nav-search-bar-height-default: 42px;
+$nav-search-bar-height-small: 28px;
+$nav-search-button-width-default: 144px;
+$nav-search-button-width-small: 72px;
+
+.navContainer {
+    width: 100%;
+    height: $nav-height-regular;
+    background-color: $clr-background;
+    border-bottom: 1px $clr-bkg-medium solid;
+
+    @include respond(small) {
+        height: $nav-height-small;
+    }
+}
+
+.navTitleContainer {
+    float: left;
+    height: 100%;
+    width: $nav-title-width-regular;
+    margin-left: $mar-default;
+
+    @include respond(small) {
+        width: $nav-title-width-small;
+    }
+}
+
+.navTitle {
+    font-family: $font-default;
+    font-size: 32pt;
+    font-weight: bolder;
+    color: $clr-text-primary;
+    text-decoration: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include respond(small) {
+        font-size: 24pt;
+    }
+}
+
+.navLi {
+    display: none;
+
+    @include respond(large) {
+        display: flex;
+        float: right;
+        height: $nav-height-regular;
+        width: $nav-links-width-regular;
+        padding-right: 0px;
+    }
+}
+
+.navLinkText {
+    font-family: $font-default;
+    font-size: 18pt;
+    text-align: right;
+    color: $clr-text-primary;
+    text-decoration: none;
+    padding-left: $pad-default;
+    position: relative;
+    display: inline-block;
+    top: 35%;
+}
+
+.navLinkText:hover {
+    text-decoration: underline;
     font-weight: bold;
-    font-family: 'Anonymous Pro', monospace;
-    color: black;
+    cursor: pointer;
+}
+
+// search bar
+.searchBarContainer {
+    position: relative;
+    height: 100%;
+    top: 0px;
+    display: inline-block;
+    width: calc(100vw - ($nav-title-width-regular + $nav-links-button-width + $pad-default + $pad-default));
+
+    @include respond(large) {
+        width: calc(100vw - ($nav-title-width-regular + $nav-links-width-regular + $pad-default + $pad-default));
+    }
+
+    @include respond(small) {
+        width: calc(100vw - ($nav-title-width-small + $nav-links-button-width + $pad-default + $pad-default));
+    }
+
+}
+
+.searchBarInput {
+    width: calc(100% - $nav-search-button-width-default);
+    font-family: $font-default;
+    font-size: 20pt;
+    height: 42px;
+    border-radius: 21px 0px 0px 21px;
+    border: none;
+    background-color: $clr-bkg-light;
+    position: absolute;
+    padding-left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    // box-shadow: 4px 4px 4px #e2e2e2;
+
+    @include respond(small) {
+        width: calc(100% - $nav-search-button-width-small);
+        height: $nav-search-bar-height-small;
+        font-size: 12pt;
+    }
+}
+
+.searchBarInput:focus {
+    outline: none;
+}
+
+.searchBarButton {
+    font-family: $font-default;
+    font-size: 20pt;
+    vertical-align: middle;
+    background-color: black;
+    color: white;
+    width: $nav-search-button-width-default;
+    height: $nav-search-bar-height-default;
+    border-radius: 0px 21px 21px 0px;
+    border: none;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 16px;
+    padding-top: 8px;
+    // box-shadow: 4px 4px 4px #e2e2e2;
+
+    @include respond(small) {
+        font-size: 12pt;
+        padding-left: 6px;
+        padding-top: 6px;
+        width: $nav-search-button-width-small;
+        height: $nav-search-bar-height-small;
+    }
+}
+
+.searchBarButton:hover {
+    cursor: pointer;
+}
+
+// regular content
+.title {
+    font-size: 28pt;
+    font-weight: bold;
+    font-family: $font-default;
+    color: $clr-text-primary;
     text-decoration: none;
     padding-bottom: 25px;
 }
 
 .regular {
     font-size: 12pt;
-    font-family: 'Anonymous Pro', monospace;
-    color: black;
+    font-family: $font-default;
+    color: $clr-text-primary;
     text-decoration: none;
 }
 
@@ -22,8 +208,8 @@
 
 .regularLink {
     font-size: 12pt;
-    font-family: 'Anonymous Pro', monospace;
-    color: rgb(55, 96, 185);
+    font-family: $font-default;
+    color: $clr-accent-primary;
     text-decoration: underline;
 }
 
@@ -33,14 +219,22 @@
 
 .label {
     @extend .regular;
-    font-weight: bold;
+}
+
+// entry
+.entryContainer {
+    background-color: $clr-bkg-light;
+    border-radius: 13px;
+    margin-right: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .entryTitle {
     font-size: 16pt;
     font-weight: bold;
-    font-family: 'Anonymous Pro', monospace;
-    color: black;
+    font-family: $font-default;
+    color: $clr-text-primary;
     text-decoration: none;
 }
 
@@ -50,24 +244,19 @@
     padding-top: 10px;
 }
 
+// painel de filtros
 .filterContainer {
     padding-top: 10px;
 }
 
 .filterInput {
     font-size: 12pt;
-    font-family: 'Anonymous Pro', monospace;
-    background: none;
-    border: 1px solid #aaaaaa;
-    border-radius: 4px;
+    max-width: 240px;
+    height: 32px;
+    font-family: $font-default;
+    background: $clr-bkg-light;
+    border: none;
+    border-radius: 12px;
     display: -webkit-flex;
     -webkit-box-flex: 1;
-}
-
-.searchBarContainer {
-    width: 100%;
-}
-
-.searchBar {
-    width: 100%;
 }

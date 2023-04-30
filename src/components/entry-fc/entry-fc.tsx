@@ -8,7 +8,7 @@ export interface EntryFCProps {
 }
 
 export const EntryFC: FC<EntryFCProps> = ({ entry }) => {
-  return <div className={entryStyle.container}>
+  return <div className={mainStyle.entryContainer}>
     <label className={mainStyle.entryTitle}>{entry.name}</label>
     <div className={mainStyle.regularContainer}>
       <label className={mainStyle.label}>Ano: </label>

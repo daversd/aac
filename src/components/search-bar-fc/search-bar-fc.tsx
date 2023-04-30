@@ -17,15 +17,12 @@ export const SearchBarFC: FC = () => {
 
   /** Função que aplica o termo de busca no `searchParams` da URL */
   const applySearch = useCallback(() => {
-    const param = {search: search}
+    const param = { search: search }
     setSearchParams(param);
   }, [search, searchParams]);
 
   return <div className={mainStyle.searchBarContainer}>
-    <div className={mainStyle.title}>pesquisar</div>
-    <div className={mainStyle.filterContainer}>
-      <input className={mainStyle.searchBar} value={search} onChange={e => setSearch(e.target.value)}></input>
-      <button onClick={applySearch}>pesquisar</button>
-    </div>
+    <input className={mainStyle.searchBarInput} value={search} onChange={e => setSearch(e.target.value)}></input>
+    <div className={mainStyle.searchBarButton} onClick={applySearch}>buscar</div>
   </div>;
 }
