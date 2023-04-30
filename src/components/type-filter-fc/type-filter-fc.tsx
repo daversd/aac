@@ -43,10 +43,20 @@ export const TypeFilterFC: FC<TypeFilterFCProps> = ({ updateFilter }) => {
 
   return <div>
     {allTypes.map((_, i) =>
-      <div key={i}>
-        <input type={'checkbox'} checked={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} />
-        <label className={mainStyle.regular}>{Object.values(EntryType)[i]}</label>
-      </div>
+      <CheckboxFC value={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} label={Object.values(EntryType)[i]}/>
     )}
   </div>;
 };
+
+interface CheckBoxFCProps {
+  value: boolean,
+  onChange: (val: boolean) => void,
+  label: string
+}
+
+const CheckboxFC: FC<CheckBoxFCProps> = ({ value, onChange, label }) => {
+  return <label className={mainStyle.typeFilterContainer}>{label}
+    <input className={mainStyle.checkbox} type={'checkbox'} checked={value} onChange={e => onChange(e.target.checked)} ></input>
+    <span className={mainStyle.typeFilterCheckmark}></span>
+  </label>;
+}

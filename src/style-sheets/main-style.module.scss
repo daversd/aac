@@ -458,3 +458,61 @@ $filter-panel-width: 300px;
     padding-left: 10px;
     padding-right: 10px;
 }
+
+// filtro de tipo
+.typeFilterContainer {
+    font-family: $font-default;
+    font-size: 12pt;
+    display: block;
+    position: relative;
+    padding-left: $pad-default;
+    margin-top: $pad-small;
+    padding-bottom: $pad-small;
+    width: 100%;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.typeFilterContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.typeFilterCheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border-radius: 4px;
+    background-color: $clr-bkg-light;
+}
+
+.typeFilterContainer:hover input~.typeFilterCheckmark {
+    background-color: $clr-bkg-medium;
+}
+
+.typeFilterCheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.typeFilterContainer input:checked~.typeFilterCheckmark:after {
+    display: block;
+}
+
+.typeFilterContainer .typeFilterCheckmark:after {
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border-radius: 4px;
+    background-color: black;
+}
