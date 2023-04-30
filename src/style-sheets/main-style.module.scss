@@ -424,7 +424,11 @@ $filter-panel-width: 300px;
     display: block;
     position: absolute;
     background-color: white;
-    padding: $pad-default $pad-large;
+    padding-top: $pad-default;
+    padding-bottom: $pad-default;
+    padding-left: $pad-large;
+    padding-right: $pad-default;
+    width: 300px;
 }
 
 .filterPanelFloatBlocker {
@@ -436,13 +440,21 @@ $filter-panel-width: 300px;
     left: 0;
 }
 
+.filterContainer {
+    display: block;
+    padding-bottom: $pad-small;
+}
+
 .filterInput {
     font-family: $font-default;
     font-size: 12pt;
     max-width: 240px;
-    height: 32px;
+    width: 100%;
+    height: 28px;
     background: $clr-bkg-light;
     border: none;
     border-radius: 12px;
     display: block;
+    padding-left: 10px;
+    padding-right: 10px;
 }

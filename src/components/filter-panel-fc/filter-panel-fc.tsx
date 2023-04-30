@@ -55,8 +55,8 @@ export const FilterPanelFC: FC = () => {
   }, [filterParams]);
 
   return <div>
-    <div className={mainStyle.filterPanelFloatParent} onClick={() => setIsOpen(!isOpen)}>
-      <div className={mainStyle.filterPanelButton}>filtros</div>
+    <div className={mainStyle.filterPanelFloatParent}>
+      <div className={mainStyle.filterPanelButton} onClick={() => setIsOpen(!isOpen)}>filtros</div>
       {isOpen && <div>
         <div className={mainStyle.filterPanelFloatBlocker} onClick={() => setIsOpen(!isOpen)}></div>
         <div className={mainStyle.filterPanelFloatContainer}>
