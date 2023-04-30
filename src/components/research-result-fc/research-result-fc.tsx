@@ -5,7 +5,6 @@ import mainStyle from '../../style-sheets/main-style.module.scss';
 import { FilterEntriesByData, FilterEntriesGeneric } from "../../utils/filter-entries";
 import { stringToPatterns } from "../../utils/string-to-patterns";
 import { EntryFC } from "../entry-fc/entry-fc";
-import navBarStyle from './research-result-fc.module.scss';
 
 /**
  * Componente que renderiza os resultados da pesquisa em uma página, puxando os filtros
@@ -43,7 +42,7 @@ export const ResearchResultFC: FC = () => {
     abstractFilter: stringToPatterns(abstract)
   });
 
-  return <div className={navBarStyle.container}>
+  return <div className={mainStyle.resultContainer}>
     <div className={mainStyle.title}>{`Resultados [${content.length} itens]`}</div>
     {content.map((e, i) =>
       <div key={i}>

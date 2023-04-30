@@ -19,18 +19,7 @@ $mar-large: 60px;
 $mar-default: 30px;
 $mar-small: 10px;
 
-$font-default: 'Anonymous Pro', monospace;
-
-.mainContent {
-    background-color: $clr-background;
-    min-height: 100vh;
-}
-
-.nestedContent {
-    padding-top: 20px;
-}
-
-// nav bar
+// propriedades da barra de navegação
 $nav-height-default: 80px;
 $nav-height-small: 60px;
 $nav-title-width-regular: 96px;
@@ -42,11 +31,33 @@ $nav-search-bar-height-small: 28px;
 $nav-search-button-width-default: 144px;
 $nav-search-button-width-small: 72px;
 
+$font-default: 'Anonymous Pro', monospace;
+
+.mainContent {
+    background-color: $clr-background;
+    min-height: 100vh;
+}
+
+.nestedContent {
+    position: absolute;
+    padding-top: $pad-default;
+    top: $nav-height-default;
+    width: 100%;
+
+    @include respond(small) {
+        top: $nav-height-small;
+    }
+}
+
+// nav bar
 .navContainer {
+    // display: block;
+    position: fixed;
     width: 100%;
     height: $nav-height-default;
     background-color: $clr-background;
     border-bottom: 1px $clr-bkg-medium solid;
+    z-index: 99;
 
     @include respond(small) {
         height: $nav-height-small;
@@ -193,13 +204,15 @@ $nav-search-button-width-small: 72px;
 }
 
 .navMenuBlocker {
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, .05);
-    backdrop-filter: blur(8px);
-    width: 100vw;
-    height: 100vh;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    height: 100%;
     top: $nav-height-default;
-    left: 0;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
 
     @include respond(small) {
         top: $nav-height-small;
@@ -322,8 +335,20 @@ $nav-search-button-width-small: 72px;
     @extend .regular;
 }
 
+// result content
+.resultContainer {
+    margin-left: 300px;
+    display: block;
+    background-color: white;
+
+    @include respond(medium) {
+        margin-left: calc($mar-default + $mar-small);
+    }
+}
+
 // entry
 .entryContainer {
+    display: block;
     background-color: $clr-bkg-light;
     border-radius: 13px;
     margin-right: 30px;
@@ -346,18 +371,78 @@ $nav-search-button-width-small: 72px;
 }
 
 // painel de filtros
-.filterContainer {
-    padding-top: 10px;
+$filter-panel-width: 300px;
+
+.filterFixedPanelContainer {
+    display: none;
+
+    @include respond(large) {
+        display: block;
+        float: left;
+        width: $filter-panel-width;
+        padding-left: $pad-default;
+    }
+}
+
+.filterPanelFloatParent {
+    display: none;
+    position: absolute;
+    top: 0;
+    // top: $nav-height-default;
+
+    @include respond(medium) {
+        display: block;
+        width: $pad-default;
+        height: 100%;
+    }
+
+    @include respond(small) {
+        // top: $nav-height-small;
+    }
+}
+
+.filterPanelButton {
+    position: absolute;
+    background-color: black;
+    color: white;
+    font-family: $font-default;
+    font-size: 12pt;
+    font-weight: bold;
+    writing-mode: vertical-lr;
+    text-align: center;
+    display: block;
+    width: $pad-default;
+    padding: $pad-small;
+    z-index: 9;
+}
+
+.filterPanelButton:hover {
+    cursor: pointer;
+}
+
+.filterPanelFloatContainer {
+    display: block;
+    position: absolute;
+    background-color: white;
+    padding: $pad-default $pad-large;
+}
+
+.filterPanelFloatBlocker {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .025);
+    backdrop-filter: blur(4px);
+    width: 100vw;
+    height: 100%;
+    left: 0;
 }
 
 .filterInput {
+    font-family: $font-default;
     font-size: 12pt;
     max-width: 240px;
     height: 32px;
-    font-family: $font-default;
     background: $clr-bkg-light;
     border: none;
     border-radius: 12px;
-    display: -webkit-flex;
-    -webkit-box-flex: 1;
+    display: block;
 }

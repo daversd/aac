@@ -2,14 +2,14 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import mainStyle from '../../style-sheets/main-style.module.scss';
 import { TypeFilterFC } from "../type-filter-fc/type-filter-fc";
-import filterPanelStyle from './filter-panel-fc.module.scss';
 
 /**
  * Componente que gerencia o painel de filtragem do acervo. Filtros são gerenciados
- * dentro do componente e aplicados na URL atraves de `searchParams`.
+ * dentro do componente e aplicados na URL através de `searchParams`.
  */
-export const FilterPanelFC: FC = () => { 
+export const FilterPanelFC: FC = () => {
   const [filterParams, setFilterParams] = useSearchParams();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // armazena os filtros
   const [nameFilter, setNameFilter] = useState<string>(filterParams.get('name') ?? '');
@@ -54,32 +54,51 @@ export const FilterPanelFC: FC = () => {
     setAbstractFilter(filterParams.get('abstract') ?? '');
   }, [filterParams]);
 
-  return <div className={filterPanelStyle.container}>
-    <div className={mainStyle.title}>Filtros</div>
-    <div className={mainStyle.filterContainer}>
-      <label className={mainStyle.label}>filtro por nome</label> <br />
-      <input className={mainStyle.filterInput} value={nameFilter} onChange={e => setNameFilter(e.target.value)}></input>
+  return <div>
+    <div className={mainStyle.filterPanelFloatParent} onClick={() => setIsOpen(!isOpen)}>
+      <div className={mainStyle.filterPanelButton}>filtros</div>
+      {isOpen && <div>
+        <div className={mainStyle.filterPanelFloatBlocker} onClick={() => setIsOpen(!isOpen)}></div>
+        <div className={mainStyle.filterPanelFloatContainer}>
+
+          <FilterTextInput value={nameFilter} onChange={setNameFilter} title={'título'} />
+          <FilterTextInput value={keywordFilter} onChange={setKeywordFilter} title={'palavras-chave'} />
+          <FilterTextInput value={authorFilter} onChange={setAuthorFilter} title={'autorxs'} />
+          <FilterTextInput value={yearFilter} onChange={setYearFilter} title={'anos'} />
+          <FilterTextInput value={abstractFilter} onChange={setAbstractFilter} title={'resumo'} />
+          <div className={mainStyle.filterContainer}>
+            <label className={mainStyle.label}>tipo</label> <br />
+            <TypeFilterFC updateFilter={updateTypeFilter} />
+          </div>
+          <button onClick={applyFilter}>filtrar</button>
+        </div>
+      </div>}
     </div>
-    <div className={mainStyle.filterContainer}>
-      <label className={mainStyle.label}>filtro por keywords</label> <br />
-      <input className={mainStyle.filterInput} value={keywordFilter} onChange={e => setKeywordFilter(e.target.value)}></input>
+    <div className={mainStyle.filterFixedPanelContainer}>
+      <div className={mainStyle.title}>filtros</div>
+      <FilterTextInput value={nameFilter} onChange={setNameFilter} title={'título'} />
+      <FilterTextInput value={keywordFilter} onChange={setKeywordFilter} title={'palavras-chave'} />
+      <FilterTextInput value={authorFilter} onChange={setAuthorFilter} title={'autorxs'} />
+      <FilterTextInput value={yearFilter} onChange={setYearFilter} title={'anos'} />
+      <FilterTextInput value={abstractFilter} onChange={setAbstractFilter} title={'resumo'} />
+      <div className={mainStyle.filterContainer}>
+        <label className={mainStyle.label}>tipo</label> <br />
+        <TypeFilterFC updateFilter={updateTypeFilter} />
+      </div>
+      <button onClick={applyFilter}>filtrar</button>
     </div>
-    <div className={mainStyle.filterContainer}>
-      <label className={mainStyle.label}>filtro por autorxs</label> <br />
-      <input className={mainStyle.filterInput} value={authorFilter} onChange={e => setAuthorFilter(e.target.value)}></input>
-    </div>
-    <div className={mainStyle.filterContainer}>
-      <label className={mainStyle.label}>filtro por ano</label> <br />
-      <input className={mainStyle.filterInput} value={yearFilter} onChange={e => setYearFilter(e.target.value)}></input>
-    </div>
-    <div className={mainStyle.filterContainer}>
-      <label className={mainStyle.label}>filtro por resumo</label> <br />
-      <input className={mainStyle.filterInput} value={abstractFilter} onChange={e => setAbstractFilter(e.target.value)}></input>
-    </div>
-    <div className={mainStyle.filterContainer}>
-      <label className={mainStyle.label}>filtro por tipo</label> <br />
-      <TypeFilterFC updateFilter={updateTypeFilter}/>
-    </div>
-    <button onClick={applyFilter}>filtrar</button>
   </div>;
 };
+
+interface FilterTextInputProps {
+  value: string;
+  onChange: (val: string) => void;
+  title: string;
+}
+
+const FilterTextInput: FC<FilterTextInputProps> = ({ value, onChange, title }) => {
+  return <div className={mainStyle.filterContainer}>
+    <label className={mainStyle.label}>{title}</label> <br />
+    <input className={mainStyle.filterInput} value={value} onChange={e => onChange(e.target.value)}></input>
+  </div>
+}
