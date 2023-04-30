@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Entry } from '../../core/entry';
 import mainStyle from '../../style-sheets/main-style.module.scss';
-import entryStyle from './entry-fc.module.scss'
 
 export interface EntryFCProps {
   entry: Entry;

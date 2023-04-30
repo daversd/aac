@@ -304,9 +304,14 @@ $nav-search-button-width-small: 72px;
 
 .regularLink {
     font-size: 12pt;
+    display: inline-block;
     font-family: $font-default;
     color: $clr-accent-primary;
     text-decoration: underline;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
 }
 
 .regularLink:hover {
