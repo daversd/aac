@@ -299,7 +299,6 @@ $font-default: 'Anonymous Pro', monospace;
     color: $clr-text-primary;
     text-decoration: none;
     height: $pad-large;
-    // padding-bottom: 25px;
 }
 
 .regular {
@@ -313,6 +312,15 @@ $font-default: 'Anonymous Pro', monospace;
     @extend .regular;
     padding-top: 0px;
     padding-bottom: 0px;
+    margin-top: $mar-small;
+    margin-bottom: $mar-small;
+}
+
+.pCollapsed {
+    @extend .p;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .regularLink {
@@ -343,7 +351,7 @@ $font-default: 'Anonymous Pro', monospace;
     padding: $pad-small;
     padding-right: $pad-small;
     color: black;
-    background-color: $clr-bkg-medium;
+    background-color: $clr-bkg-light;
     border: none;
     border-radius: 12px;
 }
@@ -419,23 +427,71 @@ $font-default: 'Anonymous Pro', monospace;
     display: block;
     background-color: $clr-bkg-light;
     border-radius: 13px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding: $pad-default;
 }
 
 .entryTitle {
+    display: inline-block;
     font-size: 16pt;
     font-weight: bold;
     font-family: $font-default;
     color: $clr-text-primary;
     text-decoration: none;
+    width: 80%;
 }
 
 .regularContainer {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
+    padding-left: $pad-small;
+    margin-top: $mar-small;
 }
+
+.entryPropLabel {
+    font-family: $font-default;
+    font-size: 12pt;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.entryTag {
+    font-family: $font-default;
+    color: $clr-text-primary;
+    background-color: $clr-accent-secondary;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-left: $mar-small;
+    margin-bottom: calc($mar-small * .5);
+}
+
+.entryTag:hover {
+    cursor: pointer;
+    background-color: $clr-accent-primary;
+}
+
+.entryExpandButton {
+    // position: relative;
+    // display: inline-block;
+    text-align: center;
+    width: 50px;
+    padding: $pad-small;
+    font-family: $font-default;
+    font-size: 14pt;
+    font-weight: bold;
+    background-color: $clr-text-primary;
+    color: $clr-background;
+    float: right;
+    // right: 0;
+    // transform: translateX(-50%);
+    // left: 100%;
+    border-radius: 13px;
+    // bottom: -$pad-default;
+    // margin-top: -24px;
+}
+
+.entryExpandButton:hover {
+    cursor: pointer;
+}
+
 
 // painel de filtros
 .filterFixedPanelContainer {
