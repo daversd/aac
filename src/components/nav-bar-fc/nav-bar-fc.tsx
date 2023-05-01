@@ -36,9 +36,9 @@ const NavBarMenu: FC = () => {
     {isOpen && <div>
       <div className={style.navMenuBlocker} onClick={() => setIsOpen(!isOpen)}></div>
       <div className={style.navMenuContainer}>
-        <Link className={style.navMenuLink} to='/'>pesquise</Link>
-        <Link className={style.navMenuLink} to='/sobre'>sobre</Link>
-        <Link className={style.navMenuLink} to='/colabore'>colabore</Link>
+        <Link className={style.navMenuLink} onClick={() => setIsOpen(false)} to='/'>pesquise</Link>
+        <Link className={style.navMenuLink} onClick={() => setIsOpen(false)} to='/sobre'>sobre</Link>
+        <Link className={style.navMenuLink} onClick={() => setIsOpen(false)} to='/colabore'>colabore</Link>
       </div>
     </div>}
   </>

@@ -43,6 +43,7 @@ export const FilterPanelFC: FC = () => {
     if (typeFilter.length > 0) params.set('types', typeFilter);
     else params.delete('types');
 
+    setIsOpen(false);
     setFilterParams(params);
   }, [keywordFilter, authorFilter, yearFilter, abstractFilter, nameFilter, filterParams, typeFilter]);
 
@@ -70,7 +71,7 @@ export const FilterPanelFC: FC = () => {
             <label className={mainStyle.label}>tipo</label> <br />
             <TypeFilterFC updateFilter={updateTypeFilter} />
           </div>
-          <button onClick={applyFilter}>filtrar</button>
+          <button className={mainStyle.button} onClick={applyFilter}>aplicar filtros</button>
         </div>
       </div>}
     </div>
@@ -85,7 +86,7 @@ export const FilterPanelFC: FC = () => {
         <label className={mainStyle.label}>tipo</label> <br />
         <TypeFilterFC updateFilter={updateTypeFilter} />
       </div>
-      <button onClick={applyFilter}>filtrar</button>
+      <button className={mainStyle.button} onClick={applyFilter}>aplicar filtros</button>
     </div>
   </div>;
 };
