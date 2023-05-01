@@ -5,6 +5,7 @@ import mainStyle from '../../style-sheets/main-style.module.scss';
 import { FilterEntriesByData, FilterEntriesGeneric } from "../../utils/filter-entries";
 import { stringToPatterns } from "../../utils/string-to-patterns";
 import { EntryFC } from "../entry-fc/entry-fc";
+import { getFiltersFromSearchParams } from "../../utils/get-filters-from-search-params";
 
 /**
  * Componente que renderiza os resultados da pesquisa em uma página, puxando os filtros
@@ -23,13 +24,7 @@ export const ResearchResultFC: FC = () => {
   }
 
   // coleta os filtros individuais do search params
-  // @todo substituir por uma função unificada que faz isso
-  const keywords = searchParams.get('keywords') ?? '';
-  const authors = searchParams.get('authors') ?? '';
-  const types = searchParams.get('types') ?? '';
-  const years = searchParams.get('years') ?? '';
-  const abstract = searchParams.get('abstract') ?? '';
-  const name = searchParams.get('name') ?? '';
+  const { keywords, authors, types, years, abstract, name } = getFiltersFromSearchParams(searchParams);
 
   // aplica os filtros selecionados 
   content = FilterEntriesByData({

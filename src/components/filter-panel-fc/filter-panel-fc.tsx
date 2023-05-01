@@ -2,6 +2,8 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import mainStyle from '../../style-sheets/main-style.module.scss';
 import { TypeFilterFC } from "../type-filter-fc/type-filter-fc";
+import { getFiltersFromSearchParams } from "../../utils/get-filters-from-search-params";
+import { Filters } from "../../core/filters";
 
 /**
  * Componente que gerencia o painel de filtragem do acervo. Filtros são gerenciados
@@ -12,12 +14,13 @@ export const FilterPanelFC: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // armazena os filtros
-  const [nameFilter, setNameFilter] = useState<string>(filterParams.get('name') ?? '');
-  const [keywordFilter, setKeywordFilter] = useState<string>(filterParams.get('keywords') ?? '');
-  const [authorFilter, setAuthorFilter] = useState<string>(filterParams.get('authors') ?? '');
-  const [yearFilter, setYearFilter] = useState<string>(filterParams.get('years') ?? '');
-  const [abstractFilter, setAbstractFilter] = useState<string>(filterParams.get('abstract') ?? '');
-  const [typeFilter, setTypeFilter] = useState<string>(filterParams.get('types') || '');
+  const { name, keywords, authors, years, abstract, types } = getFiltersFromSearchParams(filterParams);
+  const [nameFilter, setNameFilter] = useState<string>(name);
+  const [keywordFilter, setKeywordFilter] = useState<string>(keywords);
+  const [authorFilter, setAuthorFilter] = useState<string>(authors);
+  const [yearFilter, setYearFilter] = useState<string>(years);
+  const [abstractFilter, setAbstractFilter] = useState<string>(abstract);
+  const [typeFilter, setTypeFilter] = useState<string>(types);
 
   /** Função utilizada para controlar o filtro de tipos remotamente */
   const updateTypeFilter = useCallback((value: string) => {
@@ -30,17 +33,17 @@ export const FilterPanelFC: FC = () => {
    */
   const applyFilter = useCallback(() => {
     const params = filterParams;
-    if (keywordFilter.length > 0) params.set('keywords', keywordFilter);
+    if (keywordFilter.length > 0) params.set(Filters.keywords, keywordFilter);
     else params.delete('keywords');
-    if (authorFilter.length > 0) params.set('authors', authorFilter);
+    if (authorFilter.length > 0) params.set(Filters.authors, authorFilter);
     else params.delete('authors');
-    if (yearFilter.length > 0) params.set('years', yearFilter);
+    if (yearFilter.length > 0) params.set(Filters.years, yearFilter);
     else params.delete('years');
-    if (abstractFilter.length > 0) params.set('abstract', abstractFilter);
+    if (abstractFilter.length > 0) params.set(Filters.years, abstractFilter);
     else params.delete('abstract');
-    if (nameFilter.length > 0) params.set('name', nameFilter);
+    if (nameFilter.length > 0) params.set(Filters.name, nameFilter);
     else params.delete('name');
-    if (typeFilter.length > 0) params.set('types', typeFilter);
+    if (typeFilter.length > 0) params.set(Filters.types, typeFilter);
     else params.delete('types');
 
     setIsOpen(false);
@@ -49,10 +52,12 @@ export const FilterPanelFC: FC = () => {
 
   // atualiza os filtros toda vez que os parâmetros de busca da URL são atualizados
   useEffect(() => {
-    setNameFilter(filterParams.get('name') ?? '');
-    setKeywordFilter(filterParams.get('keywords') ?? '');
-    setYearFilter(filterParams.get('years') ?? '');
-    setAbstractFilter(filterParams.get('abstract') ?? '');
+    const { name, keywords, authors, years, abstract } = getFiltersFromSearchParams(filterParams);
+    setNameFilter(name);
+    setAuthorFilter(authors);
+    setKeywordFilter(keywords);
+    setYearFilter(years);
+    setAbstractFilter(abstract);
   }, [filterParams]);
 
   return <div>

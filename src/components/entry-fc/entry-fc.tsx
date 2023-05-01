@@ -2,6 +2,7 @@ import { FC, useCallback, useState } from 'react';
 import { Entry } from '../../core/entry';
 import mainStyle from '../../style-sheets/main-style.module.scss';
 import { useSearchParams } from 'react-router-dom';
+import { Filters } from '../../core/filters';
 
 export interface EntryFCProps {
   entry: Entry;
@@ -12,19 +13,19 @@ export const EntryFC: FC<EntryFCProps> = ({ entry }) => {
   const [_, setSearchParams] = useSearchParams();
 
   const setYearFilter = useCallback((value: string) => {
-    setSearchParams({years: value});
+    setSearchParams({[Filters.years]: value});
   }, []);
 
   const setAuthorFilter = useCallback((value: string) => {
-    setSearchParams({authors: value});
+    setSearchParams({[Filters.authors]: value});
   }, []);
   
   const setKeywordsFilter = useCallback((value: string) => {
-    setSearchParams({keywords: value});
+    setSearchParams({[Filters.keywords]: value});
   }, []);
   
   const setTypesFilter = useCallback((value: string) => {
-    setSearchParams({types: value});
+    setSearchParams({[Filters.types]: value});
   }, []);
   
   return <div className={mainStyle.entryContainer}>

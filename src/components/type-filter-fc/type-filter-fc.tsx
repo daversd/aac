@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect, useState } from 'react';
 import { EntryType } from '../../core/entry';
 import mainStyle from '../../style-sheets/main-style.module.scss';
 import { useSearchParams } from 'react-router-dom';
+import { getFiltersFromSearchParams } from '../../utils/get-filters-from-search-params';
 
 export interface TypeFilterFCProps {
   /** função responsável pela atualização dos filtros de tipo na URL */
@@ -33,7 +34,7 @@ export const TypeFilterFC: FC<TypeFilterFCProps> = ({ updateFilter }) => {
   useEffect(() => {
     setSelectedTypes(() => {
       const selected = new Array(allTypes.length).fill(false);
-      const typeFilter = searchParams.get('types') || '';
+      const { types: typeFilter } = getFiltersFromSearchParams(searchParams);
       for (let i = 0; i < selected.length; i++) {
         if (typeFilter.includes(allTypes[i])) selected[i] = true;
       }
