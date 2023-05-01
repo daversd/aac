@@ -20,15 +20,15 @@ $mar-default: 30px;
 $mar-small: 10px;
 
 // propriedades da barra de navegação
-$nav-height-default: 80px;
+$nav-height-default: 72px;
 $nav-height-small: 60px;
 $nav-title-width-regular: 96px;
 $nav-title-width-small: 64px;
 $nav-links-width-regular: 400px;
 $nav-links-button-width: 60px;
-$nav-search-bar-height-default: 42px;
+$nav-search-bar-height-default: 32px;
 $nav-search-bar-height-small: 28px;
-$nav-search-button-width-default: 144px;
+$nav-search-button-width-default: 120px;
 $nav-search-button-width-small: 72px;
 
 $font-default: 'Anonymous Pro', monospace;
@@ -155,7 +155,7 @@ $font-default: 'Anonymous Pro', monospace;
 }
 
 .navMenuButtonLine {
-    background-color: black;
+    background-color: $clr-text-primary;
     position: relative;
     width: 100%;
     height: 5px;
@@ -175,7 +175,7 @@ $font-default: 'Anonymous Pro', monospace;
         top: $nav-height-default;
         right: 0px;
         margin-right: $mar-default;
-        background-color: white;
+        background-color: $clr-background;
         padding: $pad-small $pad-default;
     }
 
@@ -204,8 +204,8 @@ $font-default: 'Anonymous Pro', monospace;
 
 .navMenuBlocker {
     position: fixed;
-    background-color: rgba(0, 0, 0, .05);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, .025);
+    backdrop-filter: blur(2px);
     width: 100%;
     height: 100%;
     top: $nav-height-default;
@@ -237,9 +237,9 @@ $font-default: 'Anonymous Pro', monospace;
 
 .searchBarInput {
     width: calc(100% - $nav-search-button-width-default);
+    height: $nav-search-bar-height-default;
+    font-size: 18pt;
     font-family: $font-default;
-    font-size: 20pt;
-    height: 42px;
     border-radius: 21px 0px 0px 21px;
     border: none;
     background-color: $clr-bkg-light;
@@ -247,7 +247,6 @@ $font-default: 'Anonymous Pro', monospace;
     padding-left: 20px;
     top: 50%;
     transform: translateY(-50%);
-    // box-shadow: 4px 4px 4px #e2e2e2;
 
     @include respond(small) {
         width: calc(100% - $nav-search-button-width-small);
@@ -262,10 +261,10 @@ $font-default: 'Anonymous Pro', monospace;
 
 .searchBarButton {
     font-family: $font-default;
-    font-size: 20pt;
+    font-size: 18pt;
     vertical-align: middle;
-    background-color: black;
-    color: white;
+    background-color: $clr-text-primary;
+    color: $clr-background;
     width: $nav-search-button-width-default;
     height: $nav-search-bar-height-default;
     border-radius: 0px 21px 21px 0px;
@@ -275,8 +274,7 @@ $font-default: 'Anonymous Pro', monospace;
     top: 50%;
     transform: translateY(-50%);
     padding-left: 16px;
-    padding-top: 8px;
-    // box-shadow: 4px 4px 4px #e2e2e2;
+    padding-top: 5px;
 
     @include respond(small) {
         font-size: 12pt;
@@ -293,7 +291,7 @@ $font-default: 'Anonymous Pro', monospace;
 
 // regular content
 .title {
-    font-size: 28pt;
+    font-size: 22pt;
     font-weight: bold;
     font-family: $font-default;
     color: $clr-text-primary;
@@ -349,15 +347,15 @@ $font-default: 'Anonymous Pro', monospace;
 
 .button:hover {
     cursor: pointer;
-    color: white;
-    background-color: black;
+    color: $clr-background;
+    background-color: $clr-text-primary;
 }
 
 // result content
 .resultContainer {
     margin-left: 300px;
     display: block;
-    background-color: white;
+    background-color: $clr-background;
 
     @include respond(medium) {
         margin-left: calc($mar-default + $mar-small);
@@ -406,23 +404,18 @@ $filter-panel-width: 300px;
     display: none;
     position: absolute;
     top: 0;
-    // top: $nav-height-default;
 
     @include respond(medium) {
         display: block;
         width: $pad-default;
         height: 100%;
     }
-
-    @include respond(small) {
-        // top: $nav-height-small;
-    }
 }
 
 .filterPanelButton {
     position: absolute;
-    background-color: black;
-    color: white;
+    background-color: $clr-text-primary;
+    color: $clr-background;
     font-family: $font-default;
     font-size: 12pt;
     font-weight: bold;
@@ -441,7 +434,7 @@ $filter-panel-width: 300px;
 .filterPanelFloatContainer {
     display: block;
     position: absolute;
-    background-color: white;
+    background-color: $clr-background;
     padding-top: $pad-default;
     padding-bottom: $pad-default;
     padding-left: $pad-large;
@@ -452,7 +445,7 @@ $filter-panel-width: 300px;
 .filterPanelFloatBlocker {
     position: fixed;
     background-color: rgba(0, 0, 0, .025);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     width: 100vw;
     height: 100%;
     left: 0;
@@ -532,5 +525,5 @@ $filter-panel-width: 300px;
     height: 22px;
     width: 22px;
     border-radius: 4px;
-    background-color: black;
+    background-color: $clr-text-primary;
 }
