@@ -43,12 +43,23 @@ export const ResearchResultFC: FC = () => {
   });
 
   return <div className={mainStyle.resultContainer}>
-    <div className={mainStyle.title}>{`Resultados [${content.length} itens]`}</div>
+    <div className={mainStyle.title}>{`resultados [${content.length} itens]`}</div>
+    <SortBar />
     {content.map((e, i) =>
       <div key={i}>
         <EntryFC entry={e} />
         <br />
       </div>
     )}
+  </div>
+}
+
+const SortBar: FC = () => {
+  return <div className={mainStyle.sortBarContainer}>
+    <button className={mainStyle.sortToggleButton}>A - Z</button>
+    <button className={mainStyle.sortToggleButton}>Z - A</button>
+    <button className={mainStyle.sortToggleButton}>1 - 9</button>
+    <button className={mainStyle.sortToggleButton}>9 - 1</button>
+    <button className={mainStyle.sortDownloadButton}>csv</button>
   </div>
 }

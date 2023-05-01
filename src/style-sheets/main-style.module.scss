@@ -31,6 +31,8 @@ $nav-search-bar-height-small: 28px;
 $nav-search-button-width-default: 120px;
 $nav-search-button-width-small: 72px;
 
+$filter-panel-width: 300px;
+
 $font-default: 'Anonymous Pro', monospace;
 
 .mainContent {
@@ -296,7 +298,8 @@ $font-default: 'Anonymous Pro', monospace;
     font-family: $font-default;
     color: $clr-text-primary;
     text-decoration: none;
-    padding-bottom: 25px;
+    height: $pad-large;
+    // padding-bottom: 25px;
 }
 
 .regular {
@@ -351,15 +354,64 @@ $font-default: 'Anonymous Pro', monospace;
     background-color: $clr-text-primary;
 }
 
+
+
 // result content
 .resultContainer {
-    margin-left: 300px;
+    margin-left: $filter-panel-width;
     display: block;
     background-color: $clr-background;
+    margin-right: $mar-default;
 
     @include respond(medium) {
         margin-left: calc($mar-default + $mar-small);
     }
+}
+
+// sort bar
+.sortBarContainer {
+    height: $pad-large;
+    width: 100%;
+}
+
+.sortToggleButton {
+    display: inline-block;
+    font-family: $font-default;
+    font-size: 12pt;
+    margin-right: $mar-small;
+    padding: $pad-small;
+    color: black;
+    background-color: $clr-bkg-light;
+    border: none;
+    border-radius: 10px;
+
+    @include respond(small) {
+        font-size: 10pt;
+        margin-right: calc($mar-small * .75);
+        padding: calc($pad-small * .75);
+    }
+}
+
+.sortToggleButton:hover {
+    cursor: pointer;
+}
+
+.sortToggleButtonActive {
+    @extend .sortToggleButton;
+    color: $clr-background;
+    background-color: $clr-text-primary;
+}
+
+.sortDownloadButton {
+    @extend .sortToggleButton;
+    float: right;
+    margin: 0;
+    right: 0px;
+}
+
+.sortDownloadButton:hover {
+    color: $clr-background;
+    background-color: $clr-text-primary;
 }
 
 // entry
@@ -367,7 +419,6 @@ $font-default: 'Anonymous Pro', monospace;
     display: block;
     background-color: $clr-bkg-light;
     border-radius: 13px;
-    margin-right: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
 }
@@ -387,8 +438,6 @@ $font-default: 'Anonymous Pro', monospace;
 }
 
 // painel de filtros
-$filter-panel-width: 300px;
-
 .filterFixedPanelContainer {
     display: none;
 
