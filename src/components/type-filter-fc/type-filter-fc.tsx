@@ -44,7 +44,7 @@ export const TypeFilterFC: FC<TypeFilterFCProps> = ({ updateFilter }) => {
 
   return <div>
     {allTypes.map((_, i) =>
-      <CheckboxFC value={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} label={Object.values(EntryType)[i]}/>
+      <CheckboxFC key={i} value={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} label={Object.values(EntryType)[i]}/>
     )}
   </div>;
 };
