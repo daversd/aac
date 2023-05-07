@@ -1,14 +1,15 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import mainStyle from '../../style-sheets/main-style.module.scss';
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 /**
  * Componente que gerencia e renderiza a barra de pesquisa na página. Aplica a busca na URL
  * através do `searchParams`
  */
 export const SearchBarFC: FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [search, setSearch] = useState<string>('');
+  const navigate = useNavigate();
 
   // atualiza a busca inicial da página a partir da URL
   useEffect(() => {
@@ -17,8 +18,7 @@ export const SearchBarFC: FC = () => {
 
   /** Função que aplica o termo de busca no `searchParams` da URL */
   const applySearch = useCallback(() => {
-    const param = { search: search }
-    setSearchParams(param);
+    navigate(`/?search=${search}`)
   }, [search, searchParams]);
 
   return <div className={mainStyle.searchBarContainer}>
