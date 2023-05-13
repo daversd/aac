@@ -39,8 +39,8 @@ export const ResearchResultFC: FC = () => {
       yearFilter: stringToPatterns(years),
       abstractFilter: stringToPatterns(abstract)
     });
-    
-    return weightedContent;
+
+    return weightedContent.slice().sort((a, b) => b.weight - a.weight);
   }
 
   const sortNameAscending = useCallback(() => {
@@ -117,7 +117,7 @@ const SortBar: FC<SortBarProps> = ({ nameAscending, nameDescending, dateAscendin
     setSortType(sortOption);
   };
 
-  useEffect(() => {setSortFilter(SortType.Relevance)}, [searchParams])
+  useEffect(() => { setSortFilter(SortType.Relevance) }, [searchParams]);
 
 
   return <div className={mainStyle.sortBarContainer}>

@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import mainStyle from '../../style-sheets/main-style.module.scss';
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -21,8 +21,14 @@ export const SearchBarFC: FC = () => {
     navigate(`/?search=${search}`)
   }, [search, searchParams]);
 
+  const searchOnEvent = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && document.activeElement === document.getElementById('searchBar')) {
+      applySearch();
+    }
+  }
+
   return <div className={mainStyle.searchBarContainer}>
-    <input className={mainStyle.searchBarInput} value={search} onChange={e => setSearch(e.target.value)}></input>
+    <input id='searchBar' className={mainStyle.searchBarInput} value={search} onChange={e => setSearch(e.target.value)} onKeyUp={searchOnEvent}></input>
     <div className={mainStyle.searchBarButton} onClick={applySearch}>buscar</div>
   </div>;
 }

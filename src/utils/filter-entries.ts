@@ -1,5 +1,6 @@
 import { Entry } from '../core/entry';
 import { cleanString } from './clean-string';
+import { fuzzyStringMatch } from './compare-strings';
 
 export interface FilterEntryProps {
   weightedEntries: WeightedEntry[],
@@ -81,7 +82,7 @@ export function WeightedGenericEntryFilter(entries: Entry[], pattern: string[]):
 }
 
 function matchPattern(str: string, patterns: string[]): boolean {
-  return patterns.some(pattern => cleanString(str).includes(cleanString(pattern)));
+  return patterns.some(pattern => fuzzyStringMatch(cleanString(str), cleanString(pattern)));
 }
 
 function patternMatchRatio(str: string, patterns: string[]): number {
