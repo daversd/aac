@@ -8,6 +8,7 @@ export interface Entry {
   links: string[],
   imageLink?: string,
   address?: string,
+  location?: [number, number]
 }
 
 export enum EntryType {

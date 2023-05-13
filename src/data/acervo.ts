@@ -20,7 +20,8 @@ const _acervo: Entry[] = [
       'habitação',
       'plataformas digitais'
     ],
-    links: ['https://www.academia.edu/44757121/Habitat_and_Intelligence_Artificial_Intelligence_as_an_Architectural_Component']
+    links: ['https://www.academia.edu/44757121/Habitat_and_Intelligence_Artificial_Intelligence_as_an_Architectural_Component'],
+    location: [51.507666, -0.126519]
   },
   {
     name: 'Pavilhão interativo',
@@ -37,7 +38,8 @@ const _acervo: Entry[] = [
       'reconfiguração',
       'paramétrico'
     ],
-    links: ['https://www.academia.edu/26732137/Arquitetura_Interativa_Espa%C3%A7os_interativos_intermediados_pela_tecnologia']
+    links: ['https://www.academia.edu/26732137/Arquitetura_Interativa_Espa%C3%A7os_interativos_intermediados_pela_tecnologia'],
+    location: [-11.0058282, -37.1855571]
   },
   {
     name: 'Arquitetura interativa: Espaços interativos intermediados pelo digital',
@@ -54,7 +56,8 @@ const _acervo: Entry[] = [
       'reconfiguração',
       'paramétrico'
     ],
-    links: ['https://www.academia.edu/26732137/Arquitetura_Interativa_Espa%C3%A7os_interativos_intermediados_pela_tecnologia']
+    links: ['https://www.academia.edu/26732137/Arquitetura_Interativa_Espa%C3%A7os_interativos_intermediados_pela_tecnologia'],
+    location: [-11.0058282, -37.1855571]
   },
   {
     name: 'Public Parts: resocialized autonomous communal life',
@@ -76,7 +79,8 @@ const _acervo: Entry[] = [
     links: [
       'https://doi.org/10.1177/14780771211039085',
       'https://daviddoria.xyz/writings/public-parts-resocialized-autonomous-communal-life/Public+Parts_IJAC.pdf'
-    ]
+    ],
+    location: [51.507666, -0.126519]
   },
   {
     name: 'The Nooscope Manifested: AI as Instrument of Knowledge Extractivism',
@@ -99,7 +103,8 @@ const _acervo: Entry[] = [
     links: [
       'https://nooscope.ai/',
       'http://nooscope.ai/Pasquinelli_Joler_Nooscope_essay.pdf'
-    ]
+    ],
+    location: [49.0087755, 8.4082746]
   },
   {
     name: 'Architecture for the Commons: Participatory Systems in the Age of Platforms',
@@ -121,7 +126,8 @@ const _acervo: Entry[] = [
     links: [
       'https://www.routledge.com/Architecture-for-the-Commons-Participatory-Systems-in-the-Age-of-Platforms/Sanchez/p/book/9781138362369',
       'https://www.plethora-project.com/architecture-for-the-commons'
-    ]
+    ],
+    location: [42.3523699, -83.3793885]
   },
   {
     name: 'Parametricism - A New Global Style for Architecture and Urban Design',
@@ -143,7 +149,8 @@ const _acervo: Entry[] = [
       'digital',
       'estilo'
     ],
-    links: ['https://www.patrikschumacher.com/Texts/Parametricism%20-%20A%20New%20Global%20Style%20for%20Architecture%20and%20Urban%20Design.html']
+    links: ['https://www.patrikschumacher.com/Texts/Parametricism%20-%20A%20New%20Global%20Style%20for%20Architecture%20and%20Urban%20Design.html'],
+    location: [51.507666, -0.126519]
   },
   {
     name: 'The Plethora Project',
@@ -162,7 +169,8 @@ const _acervo: Entry[] = [
       'discreto',
       'combinatória'
     ],
-    links: ['https://www.plethora-project.com/']
+    links: ['https://www.plethora-project.com/'],
+    location: [42.3523699, -83.3793885]
   }
 ];
 
