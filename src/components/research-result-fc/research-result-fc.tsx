@@ -6,6 +6,8 @@ import { FilterWeightedEntriesByData, WeightedEntry, WeightedGenericEntryFilter 
 import { getFiltersFromSearchParams } from "../../utils/get-filters-from-search-params";
 import { stringToPatterns } from "../../utils/string-to-patterns";
 import { EntryFC } from "../entry-fc/entry-fc";
+import { entriesToCsv } from "../../utils/entries-to-csv";
+import { downloadFile } from "../../utils/download-file";
 
 /**
  * Componente que renderiza os resultados da pesquisa em uma página, puxando os filtros
@@ -71,13 +73,26 @@ export const ResearchResultFC: FC = () => {
     setWeightedResult(weightedResult.slice().sort((a, b) => b.weight - a.weight));
   };
 
+  const downloadCSV = () => {
+    const fileName = 'pesquisa-aac.csv';
+    downloadFile(fileName, entriesToCsv(weightedResult.map(w => w.entry)));
+  };
+
   useEffect(() => {
     setWeightedResult(getContent());
+    window.scrollTo(0, 0);
   }, [searchParams]);
 
   return <div className={mainStyle.resultContainer}>
     <div className={mainStyle.title}>{`resultados [${weightedResult.length} ${weightedResult.length === 1 ? 'item' : 'itens'}]`}</div>
-    <SortBar nameAscending={sortNameAscending} nameDescending={sortNameDescending} dateAscending={sortDateAscending} dateDescending={sortDateDescending} relevance={sortRelevance} />
+    <SortBar
+      nameAscending={sortNameAscending}
+      nameDescending={sortNameDescending}
+      dateAscending={sortDateAscending}
+      dateDescending={sortDateDescending}
+      relevance={sortRelevance}
+      downloadCSV={downloadCSV}
+    />
     {weightedResult.map(e => e.entry).map((e, i) =>
       <div key={i}>
         <EntryFC entry={e} />
@@ -93,6 +108,7 @@ interface SortBarProps {
   dateAscending: () => void;
   dateDescending: () => void;
   relevance: () => void;
+  downloadCSV: () => void;
 }
 
 enum SortType {
@@ -103,7 +119,7 @@ enum SortType {
   Relevance = 4
 }
 
-const SortBar: FC<SortBarProps> = ({ nameAscending, nameDescending, dateAscending, dateDescending, relevance }) => {
+const SortBar: FC<SortBarProps> = ({ nameAscending, nameDescending, dateAscending, dateDescending, relevance, downloadCSV }) => {
   const [sortType, setSortType] = useState<SortType>(SortType.Relevance);
   const [searchParams] = useSearchParams();
 
@@ -126,6 +142,6 @@ const SortBar: FC<SortBarProps> = ({ nameAscending, nameDescending, dateAscendin
     <button className={sortType === SortType.NameDescending ? mainStyle.sortToggleButtonActive : mainStyle.sortToggleButton} onClick={() => setSortFilter(SortType.NameDescending)}>Z - A</button>
     <button className={sortType === SortType.DateAscending ? mainStyle.sortToggleButtonActive : mainStyle.sortToggleButton} onClick={() => setSortFilter(SortType.DateAscending)}>1 - 9</button>
     <button className={sortType === SortType.DateDescending ? mainStyle.sortToggleButtonActive : mainStyle.sortToggleButton} onClick={() => setSortFilter(SortType.DateDescending)}>9 - 1</button>
-    <button className={mainStyle.sortDownloadButton}>csv</button>
+    <button className={mainStyle.sortDownloadButton} onClick={downloadCSV}>csv</button>
   </div>
 }
