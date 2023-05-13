@@ -2,15 +2,25 @@ import { Entry } from '../core/entry';
 import { cleanString } from './clean-string';
 import { fuzzyStringMatch } from './compare-strings';
 
+/** Parâmetros de filtro */
 export interface FilterEntryProps {
+  /** Items que serão filtrados */
   weightedEntries: WeightedEntry[],
+  /** Filtros a serem aplicados ao campo de título dos items */
   nameFilter?: string[],
+  /** Filtros a serem aplicados ao campo de palavras-chave dos items */
   keywordsFilter?: string[],
+  /** Filtros a serem aplicados ao campo de autores dos items */
   authorFilter?: string[],
+  /** Filtros a serem aplicados ao campo de ano dos items */
   yearFilter?: string[],
+  /** Filtros a serem aplicados ao campo de tipo dos items */
   typeFilter?: string[],
+  /** Filtros a serem aplicados ao campo de resumo dos items */
   abstractFilter?: string[],
 }
+
+/** Filtra as um grupo de entras através da aplicação de diversos filtros, aplicados em conjunto */
 export function FilterWeightedEntriesByData({ weightedEntries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterEntryProps): WeightedEntry[] {
   const filtered: WeightedEntry[] = [];
   for (const wEntry of weightedEntries) {
@@ -26,43 +36,22 @@ export function FilterWeightedEntriesByData({ weightedEntries, nameFilter, keywo
   return filtered;
 }
 
-export function FilterEntriesGeneric(entries: Entry[], pattern: string[]): Entry[] {
-  const filtered: Entry[] = [];
-  for (const entry of entries) {
-    if (entry.keywords.some(e => matchPattern((e), pattern))) {
-      filtered.push(entry);
-      continue;
-    }
-    if (entry.authors.some(e => matchPattern((e), pattern))) {
-      filtered.push(entry);
-      continue;
-    }
-    if (entry.types.some(e => matchPattern((e), pattern))) {
-      filtered.push(entry);
-      continue;
-    }
-    if (matchPattern(entry.year.toString(), pattern)) {
-      filtered.push(entry);
-      continue;
-    }
-    if (matchPattern(entry.abstract, pattern)) {
-      filtered.push(entry);
-      continue;
-    }
-    if (matchPattern(entry.name, pattern)) {
-      filtered.push(entry);
-      continue;
-    }
-  }
-
-  return filtered;
-}
-
+/**
+ * Interface que representa uma entrada e o seu peso resultante da pesquisa atual
+ */
 export interface WeightedEntry {
   entry: Entry,
   weight: number
 }
 
+/**
+ * Aplica um filtro em um grupo de `Entry`, buscando os padrões no texto das propriedades dos itens.
+ * O resultado é um conjunto de itens compatíveis com os padrões buscados, associados a pesos que
+ * representam a sua relevância em relação aos padrões de pesquisa submetidos.
+ * @param entries itens a serem filtrados
+ * @param pattern padrões de filtro a serem utilizados na pesquisa
+ * @returns os itens compatíveis com a pesquisa, com seu peso relacionado à busca
+ */
 export function WeightedGenericEntryFilter(entries: Entry[], pattern: string[]): WeightedEntry[] {
   const result: WeightedEntry[] = [];
 
@@ -81,10 +70,23 @@ export function WeightedGenericEntryFilter(entries: Entry[], pattern: string[]):
   return result;
 }
 
+/**
+ * Verifica se uma string é compatível com um array de padrões de pesquisa
+ * @param str a string a ser verificada
+ * @param patterns os diversos padrões a serem aplicados
+ * @returns a compatibilidade em relação ao padrão
+ */
 function matchPattern(str: string, patterns: string[]): boolean {
   return patterns.some(pattern => fuzzyStringMatch(cleanString(str), cleanString(pattern)));
 }
 
+/**
+ * Retorna o peso de compatibilidade entre uma string e um array de padrões de pesquisa, onde
+ * 0 representa nenhuma compatibilidade e 1 representa compatibilidade completa
+ * @param str 
+ * @param patterns 
+ * @returns a compatibilidade, entre `[0-1]`
+ */
 function patternMatchRatio(str: string, patterns: string[]): number {
   let matches = 0;
   for (const pattern of patterns) {
