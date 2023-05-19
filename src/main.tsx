@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom/client';
 import { StrictMode } from 'react';
-import { App } from './app/app';
+import { SearchApp } from './search-app/search-app';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SiteFC } from './site-fc';
+import { SobreApp } from './sobre/sobre';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -10,7 +11,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<SiteFC />}>
-          <Route path='/' element={<App />} />
+          <Route path='/' element={<SearchApp />} />
+          <Route path='/sobre' element={<SobreApp />} />
           <Route
             path='*'
             element={

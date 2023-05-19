@@ -310,8 +310,10 @@ $font-default: 'Anonymous Pro', monospace;
 
 .p {
     @extend .regular;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    font-size: 14pt;
+    line-height: 1.2;
+    padding-top: $pad-small;
+    padding-bottom: $pad-small;
     margin-top: $mar-small;
     margin-bottom: $mar-small;
 }
@@ -469,8 +471,6 @@ $font-default: 'Anonymous Pro', monospace;
 }
 
 .entryExpandButton {
-    // position: relative;
-    // display: inline-block;
     text-align: center;
     width: 50px;
     padding: $pad-small;
@@ -480,12 +480,7 @@ $font-default: 'Anonymous Pro', monospace;
     background-color: $clr-text-primary;
     color: $clr-background;
     float: right;
-    // right: 0;
-    // transform: translateX(-50%);
-    // left: 100%;
     border-radius: 13px;
-    // bottom: -$pad-default;
-    // margin-top: -24px;
 }
 
 .entryExpandButton:hover {
@@ -631,4 +626,51 @@ $font-default: 'Anonymous Pro', monospace;
     width: 22px;
     border-radius: 4px;
     background-color: $clr-text-primary;
+}
+
+// estilos do markdown
+.reactMarkdown {
+    max-width: 1200px;
+    margin: auto;
+    padding: $pad-small;
+
+    h1 {
+        font-family: $font-default;
+        font-size: 32pt;
+        font-weight: bold;
+        margin-top: $mar-small;
+    }
+    h2 {
+        font-family: $font-default;
+        font-size: 24pt;
+        font-weight: bold;
+        margin-top: $mar-default;
+    }
+    h3 {
+        font-family: $font-default;
+        font-size: 22pt;
+        font-weight: bold;
+        margin-top: auto;
+        padding-top: $pad-default;
+    }
+    h4 {
+        font-family: $font-default;
+        font-size: 10pt;
+        text-align: center;
+        font-style: italic;
+    }
+    p {
+        @extend .p;
+        font-size: 14pt;
+        line-height: 1.2;
+        padding-top: 0px;
+        padding-bottom: $pad-small;
+    }
+    li {
+        @extend p;
+    }
+    a {
+        text-decoration: underline;
+        color: $clr-accent-primary;
+    }
 }
