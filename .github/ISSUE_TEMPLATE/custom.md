@@ -1,6 +1,6 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
+name: Adição de material
+about: Gostaria de ter um material adicionado? Use este template
 title: "[MATERIAL]"
 labels: material
 assignees: ''
