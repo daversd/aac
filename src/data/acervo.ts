@@ -171,6 +171,75 @@ const _acervo: Entry[] = [
     ],
     links: ['https://www.plethora-project.com/'],
     location: [42.3523699, -83.3793885]
+  },
+  {
+    name: 'the Autopoiesis of Architecture, Volume I: A New Framework for Architecture',
+    year: 2010,
+    authors: ['Patrik Schumacher'],
+    abstract: 'O objetivo deste trabalho é um sistema teórico abrangente que se oferece à arquitetura como sua autodescrição abrangente, descrevendo a arquitetura de dentro da arquitetura, em sua constituição interna e em sua relação com seu ambiente social. A premissa aqui é que a arquitetura sempre já se constituiu auto-referencialmente, por meio de seu próprio discurso disciplinar autônomo, A teoria aqui proposta, a teoria da autopoiese arquitetônica, enfoca as comunicações arquitetônicas e “observa” essas comunicações para detectar seus padrões típicos. A teoria analisa como as comunicações individuais dependem e reproduzem estruturas de comunicação como as principais distinções, conceitos, valores, estilos, métodos e mídia da disciplina. O livro apresenta, assim, uma análise do discurso da disciplina. Mas a teoria da autopoiese arquitetônica não é concebida como uma teoria científica sobre a arquitetura, escrita de fora. Em vez disso, é uma intervenção teórica de dentro da arquitetura, tentando intervir na trajetória comunicativa contínua da arquitetura, refletindo os padrões de comunicação em evolução da arquitetura em relação ao seu domínio de tarefa social. O texto – se for bem-sucedido – pode funcionar como autodescrição da arquitetura porque descreve, avalia criticamente e aprimora a totalidade discursiva da arquitetura a partir do meio do discurso arquitetônico contemporâneo.',
+    types: [
+      EntryType.Texto,
+      EntryType.Livro
+    ],
+    keywords: [
+      'teoria',
+      'autopoiesis'
+    ],
+    links: [
+      'http://www.patrikschumacher.com/Texts/The%20Autopoiesis%20of%20Architecture_Introduction%20to%20Vol%201.htm'
+    ],
+    location: [51.507666, -0.126519]
+  },
+  {
+    name: 'Discrete timber assembly',
+    year: 2020,
+    authors: ['Gilles Retsin'],
+    abstract: 'Usando uma série de exemplos construídos, este artigo descreve um projeto computacional e método de fabricação para composições de components de madeira, com base na noção do discreto. Esta pesquisa tenta combinar aspectos do campo de Materiais Digitais e Matéria Programável com o campo arquitetônico de Pré-fabricação e Modularidade. Embora esses dois campos estejam em extremos opostos do espectro em termos de escala e operação funcional, esta pesquisa propõe que muitas das propriedades e desafios são transferíveis. Este artigo foi desenvolvido para o Fabricate 2020',
+    types: [
+      EntryType.Texto,
+      EntryType.Artigo
+    ],
+    keywords: [
+      'robótica',
+      'fabricação digital',
+      'habitação',
+      'madeira',
+      'design digital',
+      'discreto',
+      'matéria programável'
+    ],
+    links: [
+      'https://www.academia.edu/43206009/Discrete_Timber_Assembly_FABRICATE_2020'
+    ],
+    location: [51.507666, -0.126519]
+  },
+  {
+    name: 'Toward Discrete Architecture: Automation takes Command',
+    year: 2019,
+    authors: ['Gilles Retsin'],
+    abstract: 'Este artigo descreve um framework para projeto computacional discreto e fabricação no contexto de automação. Enquanto o design e a fabricação digital são noções técnicas, a automação imediatamente tem repercussões sociais e políticas. A automação relaciona-se com a industrialização e a mecanização - permitindo reconectar historicamente o digital enquanto contorna as décadas pós-modernas, desconstrutivistas ou paramétricas. Usando uma série de protótipos construídos com madeira, este artigo descreverá como as tecnologias combinadas de automação e o discreto permitem eficiências técnicas e novos interesses arquitetônicos. Ambos os projetos são baseados em materiais de CLT / compensado, cortados e dobrados em elementos maiores, que são então montados em estruturas funcionais. Ambos os projetos também são fragmentos de blocos habitacionais maiores. Blocos de construção discretos são apresentados de uma perspectiva técnica como ocupando um espaço entre a matéria programável e a pré-fabricação modular. A madeira é identificada como um material ideal para construção discreta automatizada. A partir de uma perspectiva arquitetônica, o artigo discute as implicações de uma arquitetura baseada em partes que permanecem autônomas do todo. Este trabalho foi desenvolvido para o ACADIA 2019',
+    types: [
+      EntryType.Texto,
+      EntryType.Artigo
+    ],
+    keywords: [
+      'robótica',
+      'fabricação digital',
+      'habitação',
+      'madeira',
+      'design digital',
+      'discreto',
+      'matéria programável',
+      'teoria',
+      'modular',
+      'automação',
+      'aceleracionismo',
+      'tectônica'
+    ],
+    links: [
+      'https://www.academia.edu/41060237/Toward_Discrete_Architecture_Automation_takes_Command_ACADIA_2019'
+    ],
+    location: [51.507666, -0.126519]
   }
 ];
 
