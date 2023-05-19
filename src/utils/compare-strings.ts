@@ -8,7 +8,7 @@
  * @param tolerance a tolerância de erro
  * @returns se as strings são compatíveis ou não
  */
-export function compareStrings(str1: string, str2: string, tolerance?: number): boolean {
+export function compareStrings (str1: string, str2: string, tolerance?: number): boolean {
   const matrix = Array(str1.length + 1).fill(null).map(() => Array(str2.length + 1).fill(null));
 
   for (let i = 0; i <= str2.length; i += 1) {
@@ -27,7 +27,7 @@ export function compareStrings(str1: string, str2: string, tolerance?: number): 
         matrix[i][j] = Math.min(
           matrix[i - 1][j - 1] + 1, // substitution
           matrix[i][j - 1] + 1, // insertion
-          matrix[i - 1][j] + 1, // deletion
+          matrix[i - 1][j] + 1 // deletion
         );
       }
     }
@@ -35,7 +35,7 @@ export function compareStrings(str1: string, str2: string, tolerance?: number): 
 
   const distance = matrix[str1.length][str2.length];
 
-  tolerance = tolerance ?? Math.ceil(str1.length * .15);
+  tolerance = tolerance ?? Math.ceil(str1.length * 0.15);
 
   return distance <= tolerance;
 }

@@ -12,7 +12,7 @@ export const NavBarFC: FC = () => {
       <NavBarLinks />
       <NavBarMenu />
     </div>
-  </nav>
+  </nav>;
 };
 
 const NavBarLinks: FC = () => {
@@ -20,8 +20,8 @@ const NavBarLinks: FC = () => {
     <Link className={style.navLinkText} to='/'>pesquise</Link>
     <Link className={style.navLinkText} to='/sobre'>sobre</Link>
     <Link className={style.navLinkText} to='/colabore'>colabore</Link>
-  </div>
-}
+  </div>;
+};
 
 const NavBarMenu: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -41,5 +41,5 @@ const NavBarMenu: FC = () => {
         <Link className={style.navMenuLink} onClick={() => setIsOpen(false)} to='/colabore'>colabore</Link>
       </div>
     </div>}
-  </>
-}
+  </>;
+};

@@ -21,7 +21,7 @@ export interface FilterEntryProps {
 }
 
 /** Filtra as um grupo de entras através da aplicação de diversos filtros, aplicados em conjunto */
-export function FilterWeightedEntriesByData({ weightedEntries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterEntryProps): WeightedEntry[] {
+export function FilterWeightedEntriesByData ({ weightedEntries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterEntryProps): WeightedEntry[] {
   const filtered: WeightedEntry[] = [];
   for (const wEntry of weightedEntries) {
     if (nameFilter && !matchPattern(wEntry.entry.name, nameFilter)) continue;
@@ -52,16 +52,16 @@ export interface WeightedEntry {
  * @param pattern padrões de filtro a serem utilizados na pesquisa
  * @returns os itens compatíveis com a pesquisa, com seu peso relacionado à busca
  */
-export function WeightedGenericEntryFilter(entries: Entry[], pattern: string[]): WeightedEntry[] {
+export function WeightedGenericEntryFilter (entries: Entry[], pattern: string[]): WeightedEntry[] {
   const result: WeightedEntry[] = [];
 
   for (const entry of entries) {
     let weight = 0;
     weight += patternMatchRatio(entry.keywords.join(' '), pattern) * 1;
     weight += patternMatchRatio(entry.authors.join(' '), pattern) * 1;
-    weight += patternMatchRatio(entry.types.join(' '), pattern) * .5;
+    weight += patternMatchRatio(entry.types.join(' '), pattern) * 0.5;
     weight += patternMatchRatio(entry.year.toString(), pattern) * 1;
-    weight += patternMatchRatio(entry.abstract, pattern) * .5;
+    weight += patternMatchRatio(entry.abstract, pattern) * 0.5;
     weight += patternMatchRatio(entry.name, pattern) * 1;
 
     if (weight > 0) result.push({ entry, weight });
@@ -76,18 +76,18 @@ export function WeightedGenericEntryFilter(entries: Entry[], pattern: string[]):
  * @param patterns os diversos padrões a serem aplicados
  * @returns a compatibilidade em relação ao padrão
  */
-function matchPattern(str: string, patterns: string[]): boolean {
+function matchPattern (str: string, patterns: string[]): boolean {
   return patterns.some(pattern => fuzzyStringMatch(cleanString(str), cleanString(pattern)));
 }
 
 /**
  * Retorna o peso de compatibilidade entre uma string e um array de padrões de pesquisa, onde
  * 0 representa nenhuma compatibilidade e 1 representa compatibilidade completa
- * @param str 
- * @param patterns 
+ * @param str
+ * @param patterns
  * @returns a compatibilidade, entre `[0-1]`
  */
-function patternMatchRatio(str: string, patterns: string[]): number {
+function patternMatchRatio (str: string, patterns: string[]): number {
   let matches = 0;
   for (const pattern of patterns) {
     if (matchPattern(str, [pattern])) matches++;

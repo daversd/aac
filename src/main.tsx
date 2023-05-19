@@ -4,6 +4,7 @@ import { SearchApp } from './search-app/search-app';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SiteFC } from './site-fc';
 import { SobreApp } from './sobre/sobre';
+import { ColaboreApp } from './colabore/colabore';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -13,6 +14,7 @@ root.render(
         <Route path='/' element={<SiteFC />}>
           <Route path='/' element={<SearchApp />} />
           <Route path='/sobre' element={<SobreApp />} />
+          <Route path='/colabore' element={<ColaboreApp />} />
           <Route
             path='*'
             element={

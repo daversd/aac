@@ -1,11 +1,11 @@
-import { Filters } from "../core/filters";
+import { Filters } from '../core/filters';
 
 /**
  * Retorna os filtros aplicados a partir do `URLSearchParams` passado.
- * @param params 
- * @returns 
+ * @param params
+ * @returns
  */
-export function getFiltersFromSearchParams(params: URLSearchParams) {
+export function getFiltersFromSearchParams (params: URLSearchParams) {
   const keywords = params.get(Filters.keywords) ?? '';
   const authors = params.get(Filters.authors) ?? '';
   const types = params.get(Filters.types) ?? '';
@@ -13,5 +13,5 @@ export function getFiltersFromSearchParams(params: URLSearchParams) {
   const abstract = params.get(Filters.abstract) ?? '';
   const name = params.get(Filters.name) ?? '';
 
-  return { keywords, authors, types, years, abstract, name }
+  return { keywords, authors, types, years, abstract, name };
 }

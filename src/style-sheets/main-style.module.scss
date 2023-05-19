@@ -629,23 +629,46 @@ $font-default: 'Anonymous Pro', monospace;
 }
 
 // estilos do markdown
-.reactMarkdown {
+.mdContainer {
     max-width: 1200px;
     margin: auto;
     padding: $pad-small;
+}
 
+.mdToggle {
+    display: block;
+    font-family: $font-default;
+    font-size: 14pt;
+    margin-bottom: $mar-small;
+    padding: $pad-small;
+    color: black;
+    background-color: $clr-bkg-light;
+    border: none;
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.mdToggle:hover {
+    cursor: pointer;
+    color: $clr-background;
+    background-color: $clr-text-primary;
+}
+
+.reactMarkdown {
     h1 {
         font-family: $font-default;
         font-size: 32pt;
         font-weight: bold;
         margin-top: $mar-small;
     }
+
     h2 {
         font-family: $font-default;
         font-size: 24pt;
         font-weight: bold;
         margin-top: $mar-default;
     }
+
     h3 {
         font-family: $font-default;
         font-size: 22pt;
@@ -653,12 +676,14 @@ $font-default: 'Anonymous Pro', monospace;
         margin-top: auto;
         padding-top: $pad-default;
     }
+
     h4 {
         font-family: $font-default;
         font-size: 10pt;
         text-align: center;
         font-style: italic;
     }
+
     p {
         @extend .p;
         font-size: 14pt;
@@ -666,9 +691,11 @@ $font-default: 'Anonymous Pro', monospace;
         padding-top: 0px;
         padding-bottom: $pad-small;
     }
+
     li {
         @extend p;
     }
+
     a {
         text-decoration: underline;
         color: $clr-accent-primary;

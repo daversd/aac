@@ -1,6 +1,6 @@
 # AAC - Acervo de Arquitetura Computacional
 
-O Acervo de Arquitetura Computacional é um projeto que tem como objetivo ser uma plataforma colaborativa de **divulgação**, **concentração** e **exploração** de conteúdos relacionados à intercessão entre arquitetura e tecnologias computacionais, especialmente voltado para o público falante de português. O projeto é desenvolvido como uma **plataforma colaborativa open source** baseada em uma **página /aplicativo web** que pode ser ampliada por seus próprios usuários, através de colaborações funcionais, correções e contribuições com conteúdo.  
+O Acervo de Arquitetura Computacional - **AAC** é um projeto que tem como objetivo ser uma plataforma colaborativa de **divulgação**, **concentração** e **exploração** de conteúdos relacionados à intercessão entre arquitetura e tecnologias computacionais, especialmente voltado para o público falante de português. O projeto é desenvolvido como uma **plataforma colaborativa open source** baseada em uma **página /aplicativo web** que pode ser ampliada por seus próprios usuários, através de colaborações funcionais, correções e contribuições com conteúdo.  
 
 ## Objetivos e pontos
 

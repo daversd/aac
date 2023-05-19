@@ -1,13 +1,13 @@
-import { FC, useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { acervo } from "../../data/acervo";
+import { FC, useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { acervo } from '../../data/acervo';
 import mainStyle from '../../style-sheets/main-style.module.scss';
-import { FilterWeightedEntriesByData, WeightedEntry, WeightedGenericEntryFilter } from "../../utils/filter-entries";
-import { getFiltersFromSearchParams } from "../../utils/get-filters-from-search-params";
-import { stringToPatterns } from "../../utils/string-to-patterns";
-import { EntryFC } from "../entry-fc/entry-fc";
-import { entriesToCsv } from "../../utils/entries-to-csv";
-import { downloadFile } from "../../utils/download-file";
+import { FilterWeightedEntriesByData, WeightedEntry, WeightedGenericEntryFilter } from '../../utils/filter-entries';
+import { getFiltersFromSearchParams } from '../../utils/get-filters-from-search-params';
+import { stringToPatterns } from '../../utils/string-to-patterns';
+import { EntryFC } from '../entry-fc/entry-fc';
+import { entriesToCsv } from '../../utils/entries-to-csv';
+import { downloadFile } from '../../utils/download-file';
 
 /**
  * Componente que renderiza os resultados da pesquisa em uma página, puxando os filtros
@@ -31,7 +31,7 @@ export const ResearchResultFC: FC = () => {
     // coleta os filtros individuais do search params
     const { keywords, authors, types, years, abstract, name } = getFiltersFromSearchParams(searchParams);
 
-    // aplica os filtros selecionados 
+    // aplica os filtros selecionados
     weightedContent = FilterWeightedEntriesByData({
       weightedEntries: weightedContent,
       nameFilter: stringToPatterns(name),
@@ -43,7 +43,7 @@ export const ResearchResultFC: FC = () => {
     });
 
     return weightedContent.slice().sort((a, b) => b.weight - a.weight);
-  }
+  };
 
   const sortNameAscending = useCallback(() => {
     const sortedContent = weightedResult.slice();
@@ -99,8 +99,8 @@ export const ResearchResultFC: FC = () => {
         <br />
       </div>
     )}
-  </div>
-}
+  </div>;
+};
 
 interface SortBarProps {
   nameAscending: () => void;
@@ -133,8 +133,7 @@ const SortBar: FC<SortBarProps> = ({ nameAscending, nameDescending, dateAscendin
     setSortType(sortOption);
   };
 
-  useEffect(() => { setSortFilter(SortType.Relevance) }, [searchParams]);
-
+  useEffect(() => { setSortFilter(SortType.Relevance); }, [searchParams]);
 
   return <div className={mainStyle.sortBarContainer}>
     <button className={sortType === SortType.Relevance ? mainStyle.sortToggleButtonActive : mainStyle.sortToggleButton} onClick={() => setSortFilter(SortType.Relevance)}>relevância</button>
@@ -143,5 +142,5 @@ const SortBar: FC<SortBarProps> = ({ nameAscending, nameDescending, dateAscendin
     <button className={sortType === SortType.DateAscending ? mainStyle.sortToggleButtonActive : mainStyle.sortToggleButton} onClick={() => setSortFilter(SortType.DateAscending)}>1 - 9</button>
     <button className={sortType === SortType.DateDescending ? mainStyle.sortToggleButtonActive : mainStyle.sortToggleButton} onClick={() => setSortFilter(SortType.DateDescending)}>9 - 1</button>
     <button className={mainStyle.sortDownloadButton} onClick={downloadCSV}>csv</button>
-  </div>
-}
+  </div>;
+};

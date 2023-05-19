@@ -60,4 +60,4 @@ const CheckboxFC: FC<CheckBoxFCProps> = ({ value, onChange, label }) => {
     <input className={mainStyle.checkbox} type={'checkbox'} checked={value} onChange={e => onChange(e.target.checked)} ></input>
     <span className={mainStyle.typeFilterCheckmark}></span>
   </label>;
-}
+};

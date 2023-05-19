@@ -5,7 +5,7 @@ import mainStyle from '../style-sheets/main-style.module.scss';
 import remarkGfm from 'remark-gfm';
 import { acervo } from '../data/acervo';
 
-export const SobreApp: FC = () => {
+export const ColaboreApp: FC = () => {
   const [showManifesto, setShowManifesto] = useState<boolean>(true);
   const [showStats, setShowStats] = useState<boolean>(false);
   const stats = `

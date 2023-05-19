@@ -1,9 +1,9 @@
-import { FC, useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { FC, useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import mainStyle from '../../style-sheets/main-style.module.scss';
-import { TypeFilterFC } from "../type-filter-fc/type-filter-fc";
-import { getFiltersFromSearchParams } from "../../utils/get-filters-from-search-params";
-import { Filters } from "../../core/filters";
+import { TypeFilterFC } from '../type-filter-fc/type-filter-fc';
+import { getFiltersFromSearchParams } from '../../utils/get-filters-from-search-params';
+import { Filters } from '../../core/filters';
 
 /**
  * Componente que gerencia o painel de filtragem do acervo. Filtros são gerenciados
@@ -27,7 +27,7 @@ export const FilterPanelFC: FC = () => {
     setTypeFilter(value);
   }, []);
 
-  /** 
+  /**
    * Função utilizada para atualizar os valores dos filtros na URL da página
    * através de seus `searchParams`
    */
@@ -106,5 +106,5 @@ const FilterTextInput: FC<FilterTextInputProps> = ({ value, onChange, title }) =
   return <div className={mainStyle.filterContainer}>
     <label className={mainStyle.label}>{title}</label> <br />
     <input className={mainStyle.filterInput} value={value} onChange={e => onChange(e.target.value)}></input>
-  </div>
-}
+  </div>;
+};

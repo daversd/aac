@@ -13,21 +13,21 @@ export const EntryFC: FC<EntryFCProps> = ({ entry }) => {
   const [_, setSearchParams] = useSearchParams();
 
   const setYearFilter = useCallback((value: string) => {
-    setSearchParams({[Filters.years]: value});
+    setSearchParams({ [Filters.years]: value });
   }, []);
 
   const setAuthorFilter = useCallback((value: string) => {
-    setSearchParams({[Filters.authors]: value});
+    setSearchParams({ [Filters.authors]: value });
   }, []);
-  
+
   const setKeywordsFilter = useCallback((value: string) => {
-    setSearchParams({[Filters.keywords]: value});
+    setSearchParams({ [Filters.keywords]: value });
   }, []);
-  
+
   const setTypesFilter = useCallback((value: string) => {
-    setSearchParams({[Filters.types]: value});
+    setSearchParams({ [Filters.types]: value });
   }, []);
-  
+
   return <div className={mainStyle.entryContainer}>
     <label className={mainStyle.entryTitle}>{entry.name}</label>
     <div className={mainStyle.entryExpandButton} onClick={() => setIsOpen(!isOpen)}>{`${isOpen ? '-' : '+'}`}</div>
@@ -38,7 +38,7 @@ export const EntryFC: FC<EntryFCProps> = ({ entry }) => {
     <EntryProperty value={entry.authors} label={'Autorxs'} onClick={setAuthorFilter}/>
     {isOpen && <EntryProperty value={entry.keywords} label={'Palavras-chave'} onClick={setKeywordsFilter}/>}
     {isOpen && <EntryProperty value={entry.types} label={'Tipos'} onClick={setTypesFilter}/>}
-    {isOpen &&  <div className={mainStyle.regularContainer}>
+    {isOpen && <div className={mainStyle.regularContainer}>
       <label className={mainStyle.entryPropLabel}>Links: </label>
       {entry.links.map((l, i) =>
         <div key={i}>
@@ -63,8 +63,8 @@ const EntryProperty: FC<EntryPropertyProps> = ({ value, label, onClick }) => {
       <EntryTag key={i} value={v} onClick={onClick}/>
     )}
 
-  </div>
-}
+  </div>;
+};
 
 interface EntryTagProps {
   value: string;
@@ -72,5 +72,5 @@ interface EntryTagProps {
 }
 
 const EntryTag: FC<EntryTagProps> = ({ value, onClick }) => {
-  return <div className={mainStyle.entryTag} onClick={onClick && (() => onClick(value))}>{value}</div>
-}
+  return <div className={mainStyle.entryTag} onClick={onClick && (() => onClick(value))}>{value}</div>;
+};
