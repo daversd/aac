@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
-import manifesto from '../data/manifesto.md?raw';
+import manifesto from '../docs/manifesto.md?raw';
 import mainStyle from '../style-sheets/main-style.module.scss';
 import remarkGfm from 'remark-gfm';
 import { acervo } from '../data/acervo';
