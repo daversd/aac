@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import manifesto from '../docs/manifesto.md?raw';
 import mainStyle from '../style-sheets/main-style.module.scss';
@@ -16,6 +16,11 @@ export const SobreApp: FC = () => {
   - Palavras-chave: _${Array.from(new Set(acervo.flatMap(e => e.keywords))).join(', ')}_
   `;
 
+  // retorna para o topo da página
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return <div className={mainStyle.mdContainer}>
     <div className={mainStyle.mdToggle} onClick={() => setShowManifesto(!showManifesto)}>{`Manifesto [${showManifesto ? '-' : '+'}]`}</div>
     {showManifesto && <ReactMarkdown className={mainStyle.reactMarkdown} children={manifesto} remarkPlugins={[remarkGfm]}></ReactMarkdown>}

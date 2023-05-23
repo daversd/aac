@@ -45,6 +45,7 @@ $font-default: 'Anonymous Pro', monospace;
     padding-top: $pad-default;
     top: $nav-height-default;
     width: 100%;
+    min-height: 100%;
 
     @include respond(small) {
         top: $nav-height-small;
@@ -53,7 +54,6 @@ $font-default: 'Anonymous Pro', monospace;
 
 // nav bar
 .navContainer {
-    // display: block;
     position: fixed;
     width: 100%;
     height: $nav-height-default;
@@ -218,6 +218,32 @@ $font-default: 'Anonymous Pro', monospace;
     @include respond(small) {
         top: $nav-height-small;
     }
+}
+
+// bottom bar
+.bottomBarContainer {
+    background-color: $clr-text-primary;
+    position: absolute;
+    margin-top: $mar-large;
+    width: 100%;
+    min-height: 32px;
+    bottom: 0px;
+    // display: block;
+
+    label {
+        display: inline-block;
+        font-family: $font-default;
+        font-size: 12pt;
+        color: $clr-background;
+        padding-left: $pad-small;
+    }
+}
+.bottomBarLink {
+    display: inline-block;
+    font-family: $font-default;
+    font-size: 12pt;
+    color: $clr-background;
+    padding-left: $pad-small;
 }
 
 // search bar
