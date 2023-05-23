@@ -5,7 +5,6 @@ import comoColaborar from '../docs/como-colaborar.md?raw';
 import mainStyle from '../style-sheets/main-style.module.scss';
 
 export const ColaboreApp: FC = () => {
-
   return <div className={mainStyle.mdContainer}>
     <ReactMarkdown className={mainStyle.reactMarkdown} children={comoColaborar} remarkPlugins={[remarkGfm]}></ReactMarkdown>
   </div>;

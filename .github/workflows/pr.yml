@@ -1,0 +1,83 @@
+name: pr
+on:
+  pull_request:
+    branches: [main]
+    types:
+      - opened
+      - reopened
+      - synchronize
+jobs:
+  build:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.16.0"
+          registry-url: "https://registry.npmjs.org"
+
+      - id: yarn-cache-dir
+        run: echo "::set-output name=directory::$(yarn cache dir)"
+      - id: yarn-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.directory }}
+          key: ${{ runner.os }}-yarn-${{ github.repository }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+
+  lint:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.16.0"
+          registry-url: "https://registry.npmjs.org"
+
+      - id: yarn-cache-dir
+        run: echo "::set-output name=directory::$(yarn cache dir)"
+      - id: yarn-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.directory }}
+          key: ${{ runner.os }}-yarn-${{ github.repository }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint-base
+  
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.16.0"
+          registry-url: "https://registry.npmjs.org"
+
+      - id: yarn-cache-dir
+        run: echo "::set-output name=directory::$(yarn cache dir)"
+      - id: yarn-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.directory }}
+          key: ${{ runner.os }}-yarn-${{ github.repository }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn test
