@@ -19,7 +19,7 @@ export const SobreApp: FC = () => {
   // retorna para o topo da página
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   
   return <div className={mainStyle.mdContainer}>
     <div className={mainStyle.mdToggle} onClick={() => setShowManifesto(!showManifesto)}>{`Manifesto [${showManifesto ? '-' : '+'}]`}</div>

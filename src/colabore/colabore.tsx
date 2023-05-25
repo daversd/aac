@@ -9,7 +9,7 @@ export const ColaboreApp: FC = () => {
   // retorna para o topo da página
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
 
   return <div className={mainStyle.mdContainer}>
     <ReactMarkdown className={mainStyle.reactMarkdown} children={comoColaborar} remarkPlugins={[remarkGfm]}></ReactMarkdown>
