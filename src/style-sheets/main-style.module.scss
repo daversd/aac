@@ -31,6 +31,9 @@ $nav-search-bar-height-small: 28px;
 $nav-search-button-width-default: 120px;
 $nav-search-button-width-small: 72px;
 
+// propriedades da barra de rodapé
+$footer-min-height: 32px;
+
 $filter-panel-width: 300px;
 
 $font-default: 'Anonymous Pro', monospace;
@@ -44,22 +47,26 @@ $font-default: 'Anonymous Pro', monospace;
     position: absolute;
     padding-top: $pad-default;
     top: $nav-height-default;
+    min-height: calc(100% - $nav-height-default);
     width: 100%;
-    min-height: 100%;
+    display: block;
+    padding-bottom: 150px;
 
     @include respond(small) {
         top: $nav-height-small;
+        min-height: calc(100% - $nav-height-small);
     }
 }
 
 // nav bar
 .navContainer {
-    position: fixed;
+    position: top;
     width: 100%;
     height: $nav-height-default;
     background-color: $clr-background;
     border-bottom: 1px $clr-bkg-medium solid;
     z-index: 99;
+    display: block;
 
     @include respond(small) {
         height: $nav-height-small;
@@ -223,12 +230,12 @@ $font-default: 'Anonymous Pro', monospace;
 // bottom bar
 .bottomBarContainer {
     background-color: $clr-text-primary;
+    display: block;
     position: absolute;
-    margin-top: $mar-large;
     width: 100%;
-    min-height: 32px;
+    min-height: $footer-min-height;
     bottom: 0px;
-    // display: block;
+    padding: $pad-small;
 
     label {
         display: inline-block;
