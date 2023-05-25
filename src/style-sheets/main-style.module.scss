@@ -44,6 +44,7 @@ $font-default: 'Anonymous Pro', monospace;
 }
 
 .nestedContent {
+    background-color: $clr-background;
     position: absolute;
     padding-top: $pad-default;
     top: $nav-height-default;
@@ -331,7 +332,7 @@ $font-default: 'Anonymous Pro', monospace;
     font-family: $font-default;
     color: $clr-text-primary;
     text-decoration: none;
-    height: $pad-large;
+    margin-bottom: $mar-default;
 }
 
 .regular {
@@ -385,7 +386,7 @@ $font-default: 'Anonymous Pro', monospace;
     margin-top: $mar-small;
     padding: $pad-small;
     padding-right: $pad-small;
-    color: black;
+    color: $clr-text-primary;
     background-color: $clr-bkg-light;
     border: none;
     border-radius: 12px;
@@ -423,7 +424,7 @@ $font-default: 'Anonymous Pro', monospace;
     font-size: 12pt;
     margin-right: $mar-small;
     padding: $pad-small;
-    color: black;
+    color: $clr-text-primary;
     background-color: $clr-bkg-light;
     border: none;
     border-radius: 10px;
@@ -607,6 +608,7 @@ $font-default: 'Anonymous Pro', monospace;
 .typeFilterContainer {
     font-family: $font-default;
     font-size: 12pt;
+    color: $clr-text-primary;
     display: block;
     position: relative;
     padding-left: $pad-default;
@@ -674,7 +676,7 @@ $font-default: 'Anonymous Pro', monospace;
     font-size: 14pt;
     margin-bottom: $mar-small;
     padding: $pad-small;
-    color: black;
+    color: $clr-text-primary;
     background-color: $clr-bkg-light;
     border: none;
     border-radius: 12px;
