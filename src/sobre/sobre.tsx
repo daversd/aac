@@ -8,6 +8,7 @@ import { acervo } from '../data/acervo';
 export const SobreApp: FC = () => {
   const [showManifesto, setShowManifesto] = useState<boolean>(true);
   const [showStats, setShowStats] = useState<boolean>(false);
+  //const visits = 0; //https://countapi.xyz/
   const stats = `
   # Estatísticas
   - Total de itens: _${acervo.length}_
