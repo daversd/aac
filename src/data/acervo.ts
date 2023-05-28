@@ -164,7 +164,7 @@ const _acervo: Material[] = [
     keywords: [
       'comum',
       'opensource',
-      'aberto',
+      'projeto aberto',
       'ensino',
       'discreto',
       'combinatória'
@@ -297,7 +297,7 @@ const _acervo: Material[] = [
     ],
     keywords: [
       'algoritmos',
-      'inteligencia artificial',
+      'inteligência artificial',
       'teoria',
       'crítica',
       'trabalho',

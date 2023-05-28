@@ -14,7 +14,7 @@ export const SobreApp: FC = () => {
   - Total de itens: _${acervo.length}_
   - Total de autorxs: _${Array.from(new Set(acervo.flatMap(e => e.authors))).length}_
   - Tipos de itens: _${Array.from(new Set(acervo.flatMap(e => e.types))).join(', ')}_
-  - Palavras-chave: _${Array.from(new Set(acervo.flatMap(e => e.keywords))).join(', ')}_
+  - Palavras-chave: _${Array.from(new Set(acervo.flatMap(e => e.keywords))).sort().join(', ')}_
   `;
 
   // retorna para o topo da página
