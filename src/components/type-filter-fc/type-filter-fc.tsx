@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from 'react';
-import { EntryType } from '../../core/entry';
+import { MaterialType } from '../../core/material';
 import mainStyle from '../../style-sheets/main-style.module.scss';
 import { useSearchParams } from 'react-router-dom';
 import { getFiltersFromSearchParams } from '../../utils/get-filters-from-search-params';
@@ -13,7 +13,7 @@ export const TypeFilterFC: FC<TypeFilterFCProps> = ({ updateFilter }) => {
   // aqui os searchParams são apenas coletados, não setados
   const [searchParams] = useSearchParams();
   // coleta os tipos disponíveis
-  const [allTypes] = useState<EntryType[]>(Object.keys(EntryType) as EntryType[]);
+  const [allTypes] = useState<MaterialType[]>(Object.keys(MaterialType) as MaterialType[]);
 
   // controla os tipos selecionados (iniciado com todos desmarcados)
   const [selectedTypes, setSelectedTypes] = useState<boolean[]>(new Array(allTypes.length).fill(false));
@@ -44,7 +44,7 @@ export const TypeFilterFC: FC<TypeFilterFCProps> = ({ updateFilter }) => {
 
   return <div>
     {allTypes.map((_, i) =>
-      <CheckboxFC key={i} value={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} label={Object.values(EntryType)[i]}/>
+      <CheckboxFC key={i} value={selectedTypes[i]} onChange={_ => updateSelected(i, !selectedTypes[i])} label={Object.values(MaterialType)[i]}/>
     )}
   </div>;
 };

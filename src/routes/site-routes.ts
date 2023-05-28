@@ -1,4 +1,5 @@
 export enum SiteRoutes {
-  Pesquisar = 'pesquisar',
-  Item = 'item'
+  pesquise = 'pesquise',
+  sobre = 'sobre',
+  colabore = 'colabore'
 }

@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm';
 import comoColaborar from '../docs/como-colaborar.md?raw';
 import mainStyle from '../style-sheets/main-style.module.scss';
 
+/** Página de colaboração, expõe o arquivo markdown que também está presente no repositório */
 export const ColaboreApp: FC = () => {
   // retorna para o topo da página
   useEffect(() => {

@@ -1,8 +1,13 @@
-import { Entry } from '../core/entry';
+import { Material } from '../core/material';
 import { cleanString } from './clean-string';
 
-export function getLinkAddress (entry: Entry): string {
-  let address = entry.year.toString() + '-' + entry.name;
+/**
+ * Produz um endereço utilizando o conteúdo do material
+ * @param material material a ser processado
+ * @returns endereço do link
+ */
+export function getLinkAddress (material: Material): string {
+  let address = material.year.toString() + '-' + material.name;
   address = cleanString(address);
   address = address.replace(/[[\]:(),_]/g, '');
   address = address.trim();

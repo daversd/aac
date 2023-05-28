@@ -1,3 +1,4 @@
+/** Tipos de filtros de pesquisa */
 export enum Filters {
   keywords = 'keywords',
   authors = 'authors',

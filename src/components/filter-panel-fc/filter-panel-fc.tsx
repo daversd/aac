@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import mainStyle from '../../style-sheets/main-style.module.scss';
+import style from '../../style-sheets/main-style.module.scss';
 import { TypeFilterFC } from '../type-filter-fc/type-filter-fc';
 import { getFiltersFromSearchParams } from '../../utils/get-filters-from-search-params';
 import { Filters } from '../../core/filters';
@@ -61,37 +61,37 @@ export const FilterPanelFC: FC = () => {
   }, [filterParams]);
 
   return <div>
-    <div className={mainStyle.filterPanelFloatParent}>
-      <div className={mainStyle.filterPanelButton} onClick={() => setIsOpen(!isOpen)}>filtros</div>
+    <div className={style.filterPanelFloatParent}>
+      <div className={style.filterPanelButton} onClick={() => setIsOpen(!isOpen)}>filtros</div>
       {isOpen && <div>
-        <div className={mainStyle.filterPanelFloatBlocker} onClick={() => setIsOpen(!isOpen)}></div>
-        <div className={mainStyle.filterPanelFloatContainer}>
+        <div className={style.filterPanelFloatBlocker} onClick={() => setIsOpen(!isOpen)}></div>
+        <div className={style.filterPanelFloatContainer}>
 
           <FilterTextInput value={nameFilter} onChange={setNameFilter} title={'título'} />
           <FilterTextInput value={keywordFilter} onChange={setKeywordFilter} title={'palavras-chave'} />
           <FilterTextInput value={authorFilter} onChange={setAuthorFilter} title={'autorxs'} />
           <FilterTextInput value={yearFilter} onChange={setYearFilter} title={'anos'} />
           <FilterTextInput value={abstractFilter} onChange={setAbstractFilter} title={'resumo'} />
-          <div className={mainStyle.filterContainer}>
-            <label className={mainStyle.label}>tipo</label> <br />
+          <div className={style.filterContainer}>
+            <label className={style.label}>tipo</label> <br />
             <TypeFilterFC updateFilter={updateTypeFilter} />
           </div>
-          <button className={mainStyle.button} onClick={applyFilter}>aplicar filtros</button>
+          <button className={style.button} onClick={applyFilter}>aplicar filtros</button>
         </div>
       </div>}
     </div>
-    <div className={mainStyle.filterFixedPanelContainer}>
-      <div className={mainStyle.title}>filtros</div>
+    <div className={style.filterFixedPanelContainer}>
+      <div className={style.title}>filtros</div>
       <FilterTextInput value={nameFilter} onChange={setNameFilter} title={'título'} />
       <FilterTextInput value={keywordFilter} onChange={setKeywordFilter} title={'palavras-chave'} />
       <FilterTextInput value={authorFilter} onChange={setAuthorFilter} title={'autorxs'} />
       <FilterTextInput value={yearFilter} onChange={setYearFilter} title={'anos'} />
       <FilterTextInput value={abstractFilter} onChange={setAbstractFilter} title={'resumo'} />
-      <div className={mainStyle.filterContainer}>
-        <label className={mainStyle.label}>tipo</label> <br />
+      <div className={style.filterContainer}>
+        <label className={style.label}>tipo</label> <br />
         <TypeFilterFC updateFilter={updateTypeFilter} />
       </div>
-      <button className={mainStyle.button} onClick={applyFilter}>aplicar filtros</button>
+      <button className={style.button} onClick={applyFilter}>aplicar filtros</button>
     </div>
   </div>;
 };
@@ -103,8 +103,8 @@ interface FilterTextInputProps {
 }
 
 const FilterTextInput: FC<FilterTextInputProps> = ({ value, onChange, title }) => {
-  return <div className={mainStyle.filterContainer}>
-    <label className={mainStyle.label}>{title}</label> <br />
-    <input className={mainStyle.filterInput} value={value} onChange={e => onChange(e.target.value)}></input>
+  return <div className={style.filterContainer}>
+    <label className={style.label}>{title}</label> <br />
+    <input className={style.filterInput} value={value} onChange={e => onChange(e.target.value)}></input>
   </div>;
 };

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import style from '../../style-sheets/main-style.module.scss';
 import { SearchBarFC } from '../search-bar-fc/search-bar-fc';
 
+/** Componente que renderiza a barra de navegação */
 export const NavBarFC: FC = () => {
   return <nav>
     <div className={style.navContainer}>
@@ -14,6 +15,7 @@ export const NavBarFC: FC = () => {
   </nav>;
 };
 
+/** Componente que renderiza os botões de links da barra de navegação */
 const NavBarLinks: FC = () => {
   return <div className={style.navLi}>
     <Link className={style.navLinkText} to='/'>pesquise</Link>
@@ -22,6 +24,7 @@ const NavBarLinks: FC = () => {
   </div>;
 };
 
+/** Componente que renderiza o menu da barra de navegação, quando em modo compacto */
 const NavBarMenu: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return <>

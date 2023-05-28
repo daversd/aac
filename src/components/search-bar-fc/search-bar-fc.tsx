@@ -16,11 +16,12 @@ export const SearchBarFC: FC = () => {
     setSearch(searchParams.get('search') || '');
   }, [searchParams]);
 
-  /** Função que aplica o termo de busca no `searchParams` da URL */
+  /** Aplica o termo de busca no `searchParams` da URL */
   const applySearch = useCallback(() => {
     navigate(`/?search=${search}`);
   }, [search, searchParams]);
 
+  /** Aplica o termo de busca no `searchParams` da URL ao pressionar Enter e tiver a barra de pesquisa em foco */
   const searchOnEvent = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && document.activeElement === document.getElementById('searchBar')) {
       applySearch();

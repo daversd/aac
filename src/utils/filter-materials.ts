@@ -1,11 +1,11 @@
-import { Entry } from '../core/entry';
+import { Material } from '../core/material';
 import { cleanString } from './clean-string';
 import { fuzzyStringMatch } from './compare-strings';
 
 /** Parâmetros de filtro */
-export interface FilterEntryProps {
+export interface FilterMaterialProps {
   /** Items que serão filtrados */
-  weightedEntries: WeightedEntry[],
+  weightedMaterials: WeightedMaterial[],
   /** Filtros a serem aplicados ao campo de título dos items */
   nameFilter?: string[],
   /** Filtros a serem aplicados ao campo de palavras-chave dos items */
@@ -21,16 +21,16 @@ export interface FilterEntryProps {
 }
 
 /** Filtra as um grupo de entras através da aplicação de diversos filtros, aplicados em conjunto */
-export function FilterWeightedEntriesByData ({ weightedEntries, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterEntryProps): WeightedEntry[] {
-  const filtered: WeightedEntry[] = [];
-  for (const wEntry of weightedEntries) {
-    if (nameFilter && !matchPattern(wEntry.entry.name, nameFilter)) continue;
-    if (keywordsFilter && !wEntry.entry.keywords.some(e => matchPattern((e), keywordsFilter))) continue;
-    if (authorFilter && !wEntry.entry.authors.some(e => matchPattern((e), authorFilter))) continue;
-    if (typeFilter && !wEntry.entry.types.some(e => matchPattern((e), typeFilter))) continue;
-    if (yearFilter && !strictMatch(wEntry.entry.year.toString(), yearFilter)) continue;
-    if (abstractFilter && !matchPattern(wEntry.entry.abstract, abstractFilter)) continue;
-    filtered.push(wEntry);
+export function FilterWeightedEntriesByData ({ weightedMaterials, nameFilter, keywordsFilter, authorFilter, yearFilter, typeFilter, abstractFilter }: FilterMaterialProps): WeightedMaterial[] {
+  const filtered: WeightedMaterial[] = [];
+  for (const weightedMaterial of weightedMaterials) {
+    if (nameFilter && !strictMatch(weightedMaterial.material.name, nameFilter)) continue;
+    if (keywordsFilter && !weightedMaterial.material.keywords.some(e => strictMatch((e), keywordsFilter))) continue;
+    if (authorFilter && !weightedMaterial.material.authors.some(e => strictMatch((e), authorFilter))) continue;
+    if (typeFilter && !weightedMaterial.material.types.some(e => strictMatch((e), typeFilter))) continue;
+    if (yearFilter && !strictMatch(weightedMaterial.material.year.toString(), yearFilter)) continue;
+    if (abstractFilter && !strictMatch(weightedMaterial.material.abstract, abstractFilter)) continue;
+    filtered.push(weightedMaterial);
   }
 
   return filtered;
@@ -39,32 +39,32 @@ export function FilterWeightedEntriesByData ({ weightedEntries, nameFilter, keyw
 /**
  * Interface que representa uma entrada e o seu peso resultante da pesquisa atual
  */
-export interface WeightedEntry {
-  entry: Entry,
+export interface WeightedMaterial {
+  material: Material,
   weight: number
 }
 
 /**
- * Aplica um filtro em um grupo de `Entry`, buscando os padrões no texto das propriedades dos itens.
+ * Aplica um filtro em um grupo de `Material`, buscando os padrões no texto das propriedades dos itens.
  * O resultado é um conjunto de itens compatíveis com os padrões buscados, associados a pesos que
  * representam a sua relevância em relação aos padrões de pesquisa submetidos.
- * @param entries itens a serem filtrados
+ * @param materials itens a serem filtrados
  * @param pattern padrões de filtro a serem utilizados na pesquisa
  * @returns os itens compatíveis com a pesquisa, com seu peso relacionado à busca
  */
-export function WeightedGenericEntryFilter (entries: Entry[], pattern: string[]): WeightedEntry[] {
-  const result: WeightedEntry[] = [];
+export function WeightedGenericMaterialFilter (materials: Material[], pattern: string[]): WeightedMaterial[] {
+  const result: WeightedMaterial[] = [];
 
-  for (const entry of entries) {
+  for (const material of materials) {
     let weight = 0;
-    weight += fuzzyPatternMatchRatio(entry.keywords.join(' '), pattern) * 1;
-    weight += fuzzyPatternMatchRatio(entry.authors.join(' '), pattern) * 1;
-    weight += fuzzyPatternMatchRatio(entry.types.join(' '), pattern) * 0.5;
-    weight += strictPatternMatchRatio(entry.year.toString(), pattern) * 1;
-    weight += fuzzyPatternMatchRatio(entry.abstract, pattern) * 0.5;
-    weight += fuzzyPatternMatchRatio(entry.name, pattern) * 1;
+    weight += fuzzyPatternMatchRatio(material.keywords.join(' '), pattern) * 1;
+    weight += fuzzyPatternMatchRatio(material.authors.join(' '), pattern) * 1;
+    weight += fuzzyPatternMatchRatio(material.types.join(' '), pattern) * 0.5;
+    weight += strictPatternMatchRatio(material.year.toString(), pattern) * 1;
+    weight += strictPatternMatchRatio(material.abstract, pattern) * 0.1;
+    weight += fuzzyPatternMatchRatio(material.name, pattern) * 1;
 
-    if (weight > 0) result.push({ entry, weight });
+    if (weight > 0) result.push({ material, weight });
   }
 
   return result;
@@ -103,7 +103,7 @@ function fuzzyPatternMatchRatio (str: string, patterns: string[]): number {
  * @returns
  */
 function strictMatch (str: string, patterns: string[]): boolean {
-  return patterns.some(p => str.includes(p));
+  return patterns.some(p => cleanString(str).includes(cleanString(p)));
 }
 
 /**

@@ -16,7 +16,7 @@ Ano de produção / publicação do material
 ## Resumo
 Resumo claro e conciso da importância e conteúdo do material
 ## Tipos
-Lista dos tipos de material que se aplicam a este, como: Texto, Artigo, TCC, Tutorial, Video, Podcast... Use https://github.com/daversd/aac/blob/main/src/core/entry.ts como referência dos tipos já utlizados
+Lista dos tipos de material que se aplicam a este, como: Texto, Artigo, TCC, Tutorial, Video, Podcast... Use https://github.com/daversd/aac/blob/main/src/core/material.ts como referência dos tipos já utlizados
 ## Palavras-chave
 Lista de palavras-chave relacionadas aos temas tratados pelo material
 ## Links

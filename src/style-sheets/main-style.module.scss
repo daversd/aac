@@ -458,15 +458,15 @@ $font-default: 'Anonymous Pro', monospace;
     background-color: $clr-text-primary;
 }
 
-// entry
-.entryContainer {
+// material
+.materialContainer {
     display: block;
     background-color: $clr-bkg-light;
     border-radius: 13px;
     padding: $pad-default;
 }
 
-.entryTitle {
+.materialTitle {
     display: inline-block;
     font-size: 16pt;
     font-weight: bold;
@@ -481,14 +481,14 @@ $font-default: 'Anonymous Pro', monospace;
     margin-top: $mar-small;
 }
 
-.entryPropLabel {
+.materialPropLabel {
     font-family: $font-default;
     font-size: 12pt;
     font-style: italic;
     font-weight: bold;
 }
 
-.entryTag {
+.materialTag {
     font-family: $font-default;
     color: $clr-text-primary;
     background-color: $clr-accent-secondary;
@@ -499,12 +499,12 @@ $font-default: 'Anonymous Pro', monospace;
     margin-bottom: calc($mar-small * .5);
 }
 
-.entryTag:hover {
+.materialTag:hover {
     cursor: pointer;
     background-color: $clr-accent-primary;
 }
 
-.entryExpandButton {
+.materialExpandButton {
     text-align: center;
     width: 50px;
     padding: $pad-small;
@@ -517,7 +517,7 @@ $font-default: 'Anonymous Pro', monospace;
     border-radius: 13px;
 }
 
-.entryExpandButton:hover {
+.materialExpandButton:hover {
     cursor: pointer;
 }
 
