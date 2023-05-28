@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import style from '../../style-sheets/main-style.module.scss';
 import { SearchBarFC } from '../search-bar-fc/search-bar-fc';
 
@@ -7,7 +7,7 @@ import { SearchBarFC } from '../search-bar-fc/search-bar-fc';
 export const NavBarFC: FC = () => {
   return <nav>
     <div className={style.navContainer}>
-      <div className={style.navTitleContainer}><div className={style.navTitle}>AAC</div></div>
+      <div className={style.navTitleContainer}><NavLink className={style.navTitle} to='/'>AAC</NavLink></div>
       <SearchBarFC />
       <NavBarLinks />
       <NavBarMenu />

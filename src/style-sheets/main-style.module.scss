@@ -92,7 +92,7 @@ $font-default: 'Anonymous Pro', monospace;
     font-weight: bolder;
     color: $clr-text-primary;
     text-decoration: none;
-    position: relative;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 
