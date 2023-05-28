@@ -16,7 +16,6 @@ const _acervo: Material[] = [
     ],
     keywords: [
       'inteligência artificial',
-      'ia',
       'reconfiguração',
       'discreto',
       'automação',
@@ -74,7 +73,6 @@ const _acervo: Material[] = [
     keywords: [
       'comum',
       'inteligência artificial',
-      'ia',
       'plataformas digitais',
       'discreto',
       'automação'
@@ -97,7 +95,6 @@ const _acervo: Material[] = [
     ],
     keywords: [
       'inteligência artificial',
-      'ia',
       'informação',
       'big data',
       'trabalho',
@@ -301,7 +298,6 @@ const _acervo: Material[] = [
     keywords: [
       'algoritmos',
       'inteligencia artificial',
-      'ia',
       'teoria',
       'crítica',
       'trabalho',
@@ -325,7 +321,6 @@ const _acervo: Material[] = [
     keywords: [
       'teoria',
       'inteligência artificial',
-      'ia',
       'historia',
       'virada digital',
       'cronologia'
@@ -348,7 +343,6 @@ const _acervo: Material[] = [
       'automação',
       'algoritmos',
       'inteligência artificial',
-      'ia',
       'design digital',
       'crítica'
     ],
@@ -466,7 +460,6 @@ const _acervo: Material[] = [
     keywords: [
       'automação',
       'inteligência artificial',
-      'ia',
       'design digital',
       'crítica',
       'política',
@@ -489,7 +482,6 @@ const _acervo: Material[] = [
     ],
     keywords: [
       'inteligência artificial',
-      'ia',
       'gan',
       'design generativo',
       'planta baixa',
@@ -513,7 +505,6 @@ const _acervo: Material[] = [
     ],
     keywords: [
       'inteligência artificial',
-      'ia',
       'historia',
       'cronologia',
       'design paramétrico'
@@ -535,7 +526,6 @@ const _acervo: Material[] = [
     ],
     keywords: [
       'inteligência artificial',
-      'ia',
       'matemática',
       'grafos',
       'planta baixa',
@@ -632,7 +622,6 @@ const _acervo: Material[] = [
       'fabricação digital',
       'robótica',
       'inteligência artificial',
-      'ia',
       'microfábrica',
       'historia'
     ],
@@ -702,7 +691,6 @@ const _acervo: Material[] = [
       'cronologia',
       'historia',
       'inteligência artificial',
-      'ia',
       'cibernética'
     ],
     links: [
