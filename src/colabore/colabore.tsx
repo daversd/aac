@@ -5,7 +5,6 @@ import comoColaborar from '../docs/como-colaborar.md?raw';
 import mainStyle from '../style-sheets/main-style.module.scss';
 
 export const ColaboreApp: FC = () => {
-
   // retorna para o topo da página
   useEffect(() => {
     window.scrollTo(0, 0);

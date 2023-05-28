@@ -8,7 +8,7 @@ import { acervo } from '../data/acervo';
 export const SobreApp: FC = () => {
   const [showManifesto, setShowManifesto] = useState<boolean>(true);
   const [showStats, setShowStats] = useState<boolean>(false);
-  //const visits = 0; //https://countapi.xyz/
+  // const visits = 0; //https://countapi.xyz/
   const stats = `
   # Estatísticas
   - Total de itens: _${acervo.length}_
@@ -21,7 +21,7 @@ export const SobreApp: FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   return <div className={mainStyle.mdContainer}>
     <div className={mainStyle.mdToggle} onClick={() => setShowManifesto(!showManifesto)}>{`Manifesto [${showManifesto ? '-' : '+'}]`}</div>
     {showManifesto && <ReactMarkdown className={mainStyle.reactMarkdown} children={manifesto} remarkPlugins={[remarkGfm]}></ReactMarkdown>}

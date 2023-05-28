@@ -98,19 +98,19 @@ function fuzzyPatternMatchRatio (str: string, patterns: string[]): number {
 
 /**
  * Compara uma `string` com um array de padrões de pesquisa de maneira estrita
- * @param str 
- * @param patterns 
- * @returns 
+ * @param str
+ * @param patterns
+ * @returns
  */
-function strictMatch(str: string, patterns: string[]): boolean {
+function strictMatch (str: string, patterns: string[]): boolean {
   return patterns.some(p => str.includes(p));
 }
 
 /**
  * Retorna o peso de compatibilidade entre uma string e um array de padrões de pesquisa de forma estrita, onde
  * 0 representa nenhuma compatibilidade e 1 representa compatibilidade completa
- * @param str 
- * @param patterns 
+ * @param str
+ * @param patterns
  * @returns a compatibilidade, entre `[0-1]`
  */
 function strictPatternMatchRatio (str: string, patterns: string[]): number {
