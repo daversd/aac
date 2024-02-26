@@ -926,6 +926,27 @@ const _acervo: Material[] = [
       'https://www.academia.edu/98085608/Integra%C3%A7%C3%A3o_de_tecnologias_CAD_CAE_CAM_no_ateli%C3%AA_de_arquitetura_Uma_aplica%C3%A7%C3%A3o_no_projeto_de_edif%C3%ADcios_altos'
     ],
     location: [-22.8174239, -47.0675149]
+  },
+  {
+    name: 'Automated floorplan generation in architectural design: A review of methods and applications',
+    year: 2022,
+    authors: ['Ramon Elias Weber', 'Caitlin Mueller', 'Christoph Reinhart'],
+    abstract: 'Como a produção automatizada de layouts de edifícios - suas plantas baixas, pode impactar positivamente o desenvolvimento de projetos mais eficientes, sustentáveis e acessíveis? Neste texto, os autores investigam, à luz desta pergunta, o atual estado de métodos contemporâneos de produção automatizada de plantas baixas, coletando, classificando e analisando exemplos relevantes. Um bom texto que fornece bons referenciais, principalmente de um ponto de vista técnico, e que busca uma discussão do assunto para além do reacionarismo.',
+    types: [
+      MaterialType.Texto,
+      MaterialType.Artigo
+    ],
+    keywords: [
+      'planta baixa',
+      'automação',
+      'design generativo',
+      'sustentabilidade',
+      'machine learning',
+      'otimização'
+    ],
+    links: [
+      'https://www.sciencedirect.com/science/article/abs/pii/S0926580522002588?via%3Dihub'
+    ]
   }
 ];
 
