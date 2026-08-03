@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import style from '../../style-sheets/main-style.module.scss';
 import { TypeFilterFC } from '../type-filter-fc/type-filter-fc';
 import { getFiltersFromSearchParams } from '../../utils/get-filters-from-search-params';

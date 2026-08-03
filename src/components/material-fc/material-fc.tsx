@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { Material } from '../../core/material';
 import style from '../../style-sheets/main-style.module.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { Filters } from '../../core/filters';
 
 export interface MaterialFCProps {

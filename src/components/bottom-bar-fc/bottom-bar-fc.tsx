@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import style from '../../style-sheets/main-style.module.scss';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 /** Componente da barra de rodapé da página */
 export const BottomBarFC: FC = () => {

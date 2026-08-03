@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router';
 import style from '../../style-sheets/main-style.module.scss';
 import { SearchBarFC } from '../search-bar-fc/search-bar-fc';
 
