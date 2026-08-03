@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { acervo } from '../../data/acervo';
 import style from '../../style-sheets/main-style.module.scss';
 import { FilterWeightedEntriesByData, WeightedMaterial, WeightedGenericMaterialFilter } from '../../utils/filter-materials';

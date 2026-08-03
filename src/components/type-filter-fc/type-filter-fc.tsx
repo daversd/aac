@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { MaterialType } from '../../core/material';
 import mainStyle from '../../style-sheets/main-style.module.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { getFiltersFromSearchParams } from '../../utils/get-filters-from-search-params';
 
 export interface TypeFilterFCProps {

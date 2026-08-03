@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from 'react';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import Markdown from 'react-markdown';
 import manifesto from '../docs/manifesto.md?raw';
 import mainStyle from '../style-sheets/main-style.module.scss';
 import remarkGfm from 'remark-gfm';
@@ -24,8 +24,8 @@ export const SobreApp: FC = () => {
 
   return <div className={mainStyle.mdContainer}>
     <div className={mainStyle.mdToggle} onClick={() => setShowManifesto(!showManifesto)}>{`Manifesto [${showManifesto ? '-' : '+'}]`}</div>
-    {showManifesto && <ReactMarkdown className={mainStyle.reactMarkdown} children={manifesto} remarkPlugins={[remarkGfm]}></ReactMarkdown>}
+    {showManifesto && <div className={mainStyle.reactMarkdown}><Markdown children={manifesto} remarkPlugins={[remarkGfm]} /></div>}
     <div className={mainStyle.mdToggle} onClick={() => setShowStats(!showStats)}>{`Estatísticas [${showStats ? '-' : '+'}]`}</div>
-    {showStats && <ReactMarkdown className={mainStyle.reactMarkdown} children={stats} remarkPlugins={[remarkGfm]}></ReactMarkdown>}
+    {showStats && <div className={mainStyle.reactMarkdown}><Markdown children={stats} remarkPlugins={[remarkGfm]} /></div>}
   </div>;
 };

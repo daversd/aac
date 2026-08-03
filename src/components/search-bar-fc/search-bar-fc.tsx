@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import mainStyle from '../../style-sheets/main-style.module.scss';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router';
 
 /**
  * Componente que gerencia e renderiza a barra de pesquisa na página. Aplica a busca na URL

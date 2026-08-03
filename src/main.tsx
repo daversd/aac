@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { StrictMode } from 'react';
 import { SearchApp } from './search-app/search-app';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router';
 import { SiteFC } from './site-fc';
 import { SobreApp } from './sobre/sobre';
 import { ColaboreApp } from './colabore/colabore';
